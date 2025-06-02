@@ -627,6 +627,7 @@ body {
   font-size: 1.25rem;
   line-height: 1.4;
   color: #fff;
+  transition: color 0.3s;
 }
 .contacts-footer__mail {
   justify-self: start;
@@ -3049,7 +3050,7 @@ body.body--locked {
     width: 100%;
   }
   .contacts-footer__tel:hover {
-    color: #f6f6f6;
+    color: #d4d4d4;
   }
   .contacts-footer__mail:hover::after {
     width: 0;
