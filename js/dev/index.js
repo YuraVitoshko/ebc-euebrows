@@ -8649,11 +8649,13 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
   fullscreenButton.addEventListener("click", function() {
-    if (!document.fullscreenElement) {
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
       if (videoPlayer.requestFullscreen) {
         videoPlayer.requestFullscreen();
       } else if (videoPlayer.webkitRequestFullscreen) {
         videoPlayer.webkitRequestFullscreen();
+      } else if (videoPlayer.webkitEnterFullscreen) {
+        videoPlayer.webkitEnterFullscreen();
       } else if (videoPlayer.msRequestFullscreen) {
         videoPlayer.msRequestFullscreen();
       }
