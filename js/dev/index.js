@@ -4834,67 +4834,6 @@ function Scrollbar(_ref) {
   });
 }
 function initSliders() {
-  if (document.querySelector(".courses__slider")) {
-    new Swiper(".courses__slider", {
-      // <- Вказуємо склас потрібного слайдера
-      // Підключаємо модулі слайдера
-      // для конкретного випадку
-      modules: [Scrollbar],
-      observer: true,
-      observeParents: true,
-      // slidesPerView: 3,
-      // spaceBetween: 16,
-      //autoHeight: true,
-      speed: 800,
-      //touchRatio: 0,
-      //simulateTouch: false,
-      //loop: true,
-      //preloadImages: false,
-      //lazy: true,
-      /*
-      // Ефекти
-      effect: 'fade',
-      autoplay: {
-      	delay: 3000,
-      	disableOnInteraction: false,
-      },
-      */
-      // Пагінація
-      /*
-      pagination: {
-      	el: '.swiper-pagination',
-      	clickable: true,
-      },
-      */
-      // Скроллбар
-      scrollbar: {
-        el: ".swiper-scrollbar",
-        draggable: true
-      },
-      // Брейкпоінти
-      breakpoints: {
-        360: {
-          slidesPerView: 1.1,
-          spaceBetween: 16
-          // autoHeight: true,
-        },
-        500: {
-          slidesPerView: 1.5,
-          spaceBetween: 16
-        },
-        768: {
-          slidesPerView: 2.3,
-          spaceBetween: 16
-        },
-        992: {
-          slidesPerView: 3,
-          spaceBetween: 16
-        }
-      },
-      // Події
-      on: {}
-    });
-  }
   let advantagesSwiper;
   const advantagesSliderEl = document.querySelector(".advantages__slider");
   function toggleAdvantagesSlider() {
@@ -5240,7 +5179,7 @@ const marquee = () => {
       onResize2();
     };
     const setBaseStyles = (firstScreenVisibleSize2) => {
-      let baseStyle = "display: flex; flex-wrap: nowrap;";
+      let baseStyle = "display: flex; flex-wrap: nowrap; align-items: center;";
       if (isVertical) {
         baseStyle += `
 				flex-direction: column;
@@ -8567,6 +8506,8 @@ document.addEventListener("DOMContentLoaded", function() {
     var closePopup = closePopup2;
     const phoneInput = form.querySelector('input[name="tel"]');
     const phoneLine = form.querySelector(".form__line--phone");
+    const nameInput = form.querySelector('input[name="name"]');
+    const nameLine = form.querySelector(".form__line--name");
     phoneInput.addEventListener("input", function() {
       this.value = this.value.replace(/\D/g, "");
     });
@@ -8582,11 +8523,21 @@ document.addEventListener("DOMContentLoaded", function() {
         phoneLine.classList.add("error");
         isValid = false;
       }
+      const nameValue = nameInput.value.trim();
+      if (/^[A-Za-zА-Яа-яІіЇїЄєҐґʼ’\-]{2,}$/.test(nameValue)) {
+        nameLine.classList.remove("error");
+        nameLine.classList.add("success");
+      } else {
+        nameLine.classList.remove("success");
+        nameLine.classList.add("error");
+        isValid = false;
+      }
       if (isValid) {
         popup.classList.add("popup--active");
         document.body.classList.add("body--locked");
         form.reset();
         phoneLine.classList.remove("success");
+        nameLine.classList.remove("success");
       }
     });
     popupClose.addEventListener("click", closePopup2);
