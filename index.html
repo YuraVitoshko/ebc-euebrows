@@ -1,12 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
+		<script src="https://static.elfsight.com/platform/platform.js?v=1748875643537" async></script>
 		<title>Home Page</title>
-		<script type="module" crossorigin="" src="./js/index.min.js?v=1748796547356"></script>
-		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1748796547356">
+		<script type="module" crossorigin="" src="./js/index.min.js?v=1748875643537"></script>
+		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1748875643537">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -19,22 +20,22 @@
 						<nav class="menu__body">
 							<ul class="menu__list">
 								<li class="menu__item">
-									<a href="#" class="menu__link">Dla kogo</a>
+									<a href="#" data-fls-scrollto=".page__who" data-fls-scrollto-header="" class="menu__link">Dla kogo</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">Program</a>
+									<a href="#" data-fls-scrollto=".page__training" data-fls-scrollto-header="" class="menu__link">Program</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">Terminy</a>
+									<a href="#" data-fls-scrollto=".page__timetable" data-fls-scrollto-header="" class="menu__link">Terminy</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">Cena</a>
+									<a href="#" data-fls-scrollto=".page__courses" data-fls-scrollto-header="" class="menu__link">Cena</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">FAQ</a>
+									<a href="#" data-fls-scrollto=".page__faq" data-fls-scrollto-header="" class="menu__link">FAQ</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">Kontakt</a>
+									<a href="#" data-fls-scrollto=".page__contacts" data-fls-scrollto-header="" class="menu__link">Kontakt</a>
 								</li>
 							</ul>
 						</nav>
@@ -45,17 +46,17 @@
 							</div>
 							<ul class="actions-menu__social social-actions">
 								<li class="social-actions__item">
-									<a href="#" class="social-actions__link">
+									<a href="#" target="_blank" class="social-actions__link">
 										<img src="./assets/img/instagram.svg" alt="instagram">
 									</a>
 								</li>
 								<li class="social-actions__item">
-									<a href="#" class="social-actions__link">
+									<a href="#" target="_blank" class="social-actions__link">
 										<img src="./assets/img/facebook.svg" alt="facebook">
 									</a>
 								</li>
 								<li class="social-actions__item">
-									<a href="#" class="social-actions__link">
+									<a href="#" target="_blank" class="social-actions__link">
 										<img src="./assets/img/whatsapp.svg" alt="whatsapp">
 									</a>
 								</li>
@@ -63,7 +64,7 @@
 						</div>
 					</div>
 					<div class="header__actions">
-						<a data-fls-dynamic=".header__menu, 479.98" href="#" data-fls-button="" class="header__button button">
+						<a data-fls-dynamic=".header__menu, 479.98" href="#" data-fls-scrollto=".page__contacts" data-fls-scrollto-header="" data-fls-button="" class="header__button button">
 							Zapisz się na kurs
 							<span></span>
 						</a>
@@ -71,7 +72,6 @@
 							<span></span>
 						</button>
 					</div>
-					<!-- <include src="@components/layout/menu/menu.html" locals='{"active":"Home"}'></include> -->
 				</div>
 			</header>
 			<main class="page">
@@ -88,7 +88,7 @@
 									</p>
 								</div>
 								<div class="hero__actions">
-									<a href="#" data-fls-button="" class="hero__button button">
+									<a href="#" data-fls-button="" data-fls-scrollto=".page__contacts" data-fls-scrollto-header="" class="hero__button button">
 										Zapisz się na kurs
 										<span></span>
 									</a>
@@ -106,21 +106,9 @@
 											<img alt="Image" src="./assets/img/hero-img02.webp">
 										</picture>
 									</div>
-									<!--
-<div class="media-hero__video">
-<video playsinline muted preload="metadata">
-<source src="../../../assets/video/hero-video.mp4" type="video/mp4">
-</video>
-<div class="media-hero__controls video-controls">
-<button id="playPauseBtn">▶️</button>
-<button id="muteBtn">🔇</button>
-<button id="fullscreenBtn">⛶</button>
-</div>
-</div>
--->
 									<div class="media-hero__video video">
-										<video id="video-player" class="video__item" loop playsinline="" preload="metadata">
-											<source src="./assets/video/hero-video.mp4" type="video/mp4">
+										<video id="video-player" class="video__item" controlslist="nodownload" loop playsinline="" preload="metadata">
+											<source src="/assets/video/hero-video.mp4" type="video/mp4">
 										</video>
 										<div class="video__nav nav-video">
 											<button id="play" class="nav-video__btn-play">
@@ -266,8 +254,7 @@
 							<div class="header-block__text">
 								<p>
 									Nie obiecujemy cudów — dajemy Ci konkretne umiejętności, praktykę i narzędzia, dzięki którym naprawdę
-						możesz zacząć
-						pracę w zawodzie.
+						możesz zacząć pracę w zawodzie.
 								</p>
 							</div>
 						</div>
@@ -336,58 +323,6 @@
 							</div>
 							<div class="swiper-scrollbar"></div>
 						</div>
-						<!--
-<div class="advantages__items">
-<div class="advantages__item item-advantages">
-<div class="item-advantages__icon">
-<img src="@img/icons/icon01.svg" alt="icon">
-</div>
-<div class="item-advantages__text">
-<p>Intensywna praktyka na modelkach</p>
-</div>
-</div>
-<div class="advantages__item item-advantages">
-<div class="item-advantages__icon">
-<img src="@img/icons/icon01.svg" alt="icon">
-</div>
-<div class="item-advantages__text">
-<p>Kameralne grupy</p>
-</div>
-</div>
-<div class="advantages__item item-advantages">
-<div class="item-advantages__icon">
-<img src="@img/icons/icon01.svg" alt="icon">
-</div>
-<div class="item-advantages__text">
-<p>Dyplom z Rejestru Instytucji Szkoleniowych</p>
-</div>
-</div>
-<div class="advantages__item item-advantages">
-<div class="item-advantages__icon">
-<img src="@img/icons/icon01.svg" alt="icon">
-</div>
-<div class="item-advantages__text">
-<p>Gotowe portfolio po kursie</p>
-</div>
-</div>
-<div class="advantages__item item-advantages">
-<div class="item-advantages__icon">
-<img src="@img/icons/icon01.svg" alt="icon">
-</div>
-<div class="item-advantages__text">
-<p>Nowoczesny program i najnowsze techniki</p>
-</div>
-</div>
-<div class="advantages__item item-advantages">
-<div class="item-advantages__icon">
-<img src="@img/icons/icon01.svg" alt="icon">
-</div>
-<div class="item-advantages__text">
-<p>Wsparcie online po kursie</p>
-</div>
-</div>
-</div>
--->
 					</div>
 				</section>
 				<section class="page__training training">
@@ -501,7 +436,7 @@
 									</div>
 								</details>
 							</div>
-							<a href="#" data-fls-button="" class="training__button button">
+							<a href="#" data-fls-scrollto=".page__contacts" data-fls-scrollto-header="" data-fls-button="" class="training__button button">
 								Zapisz się na kurs
 								<span></span>
 							</a>
@@ -636,7 +571,7 @@
 												<li class="card-courses__item">• Laminacja brwi i rzęs + pielęgnacja</li>
 											</ul>
 											<div class="card-courses__price">2090 zł</div>
-											<a href="#" data-fls-button="" class="card-courses__button button">
+											<a href="#" data-fls-scrollto=".page__contacts" data-fls-scrollto-header="" data-fls-button="" class="card-courses__button button">
 												Zapisz się na kurs
 												<span></span>
 											</a>
@@ -666,7 +601,7 @@
 												<li class="card-courses__item">• Laminacja brwi i rzęs + pielęgnacja</li>
 											</ul>
 											<div class="card-courses__price">1690 zł</div>
-											<a href="#" data-fls-button="" class="card-courses__button button">
+											<a href="#" data-fls-scrollto=".page__contacts" data-fls-scrollto-header="" data-fls-button="" class="card-courses__button button">
 												Zapisz się na kurs
 												<span></span>
 											</a>
@@ -694,7 +629,7 @@
 												<li class="card-courses__item">• Omówienie zasad bezpieczeństwa i przeciwwskazań</li>
 											</ul>
 											<div class="card-courses__price">1290 zł</div>
-											<a href="#" data-fls-button="" class="card-courses__button button">
+											<a href="#" data-fls-scrollto=".page__contacts" data-fls-scrollto-header="" data-fls-button="" class="card-courses__button button">
 												Zapisz się na kurs
 												<span></span>
 											</a>
@@ -704,110 +639,6 @@
 							</div>
 							<div class="swiper-scrollbar"></div>
 						</div>
-						<!--
-<div class="courses__items">
-<div class="courses__card card-courses">
-<a href="#" class="card-courses__img">
-<img src="@img/courses-img01.png" alt="Image">
-</a>
-<div class="card-courses__body">
-<div class="card-courses__tags">
-<span class="card-courses__tag">TOP</span>
-<span class="card-courses__tag">2-dniowy</span>
-<span class="card-courses__tag">18 godzin</span>
-</div>
-<div class="card-courses__name">Stylizacja i laminacja brwi oraz rzęs 2w1</div>
-<ul class="card-courses__list">
-<li class="card-courses__item">• 4 demonstracje od instruktora</li>
-<li class="card-courses__item">
-• Testowanie 6 marek farbek i 2 marki henny
-</li>
-<li class="card-courses__item">
-• 5 praktycznych ćwiczeń na modelkach
-</li>
-<li class="card-courses__item">
-• Regulacja brwi pęsetą i woskiem
-</li>
-<li class="card-courses__item">
-• Architektura brwi
-</li>
-<li class="card-courses__item">
-• Koloryzacja brwi farbką i henną
-</li>
-<li class="card-courses__item">
-• Laminacja brwi i rzęs + pielęgnacja
-</li>
-</ul>
-<div class="card-courses__price">2090 zł</div>
-<a href="#" data-fls-button class="card-courses__button button">Zapisz się na kurs <span></span></a>
-</div>
-</div>
-<div class="courses__card card-courses">
-<a href="#" class="card-courses__img">
-<img src="@img/courses-img02.png" alt="Image">
-</a>
-<div class="card-courses__body">
-<div class="card-courses__tags">
-<span class="card-courses__tag">2-dniowy</span>
-<span class="card-courses__tag">15 godzin</span>
-</div>
-<div class="card-courses__name">Stylizacja i laminacja brwi (bez laminacji rzęs)</div>
-<ul class="card-courses__list">
-<li class="card-courses__item">• 3 demonstracje od instruktora</li>
-<li class="card-courses__item">
-• Testowanie 6 marek farbek i 2 marki henny
-</li>
-<li class="card-courses__item">
-• 4 praktycznych ćwiczeń na modelkach
-</li>
-<li class="card-courses__item">
-• Regulacja brwi pęsetą i woskiem
-</li>
-<li class="card-courses__item">
-• Architektura brwi
-</li>
-<li class="card-courses__item">
-• Koloryzacja brwi farbką i henną
-</li>
-<li class="card-courses__item">
-• Laminacja brwi i rzęs + pielęgnacja
-</li>
-</ul>
-<div class="card-courses__price">1690 zł</div>
-<a href="#" data-fls-button class="card-courses__button button">Zapisz się na kurs <span></span></a>
-</div>
-</div>
-<div class="courses__card card-courses">
-<a href="#" class="card-courses__img">
-<img src="@img/courses-img03.png" alt="Image">
-</a>
-<div class="card-courses__body">
-<div class="card-courses__tags">
-<span class="card-courses__tag">1 dzień</span>
-<span class="card-courses__tag">9 godzin</span>
-</div>
-<div class="card-courses__name">Laminacja brwi i rzęs + pielęgnacja</div>
-<ul class="card-courses__list">
-<li class="card-courses__item">• Testowanie różnych marek produktów do laminacji</li>
-<li class="card-courses__item">
-• 3 praktycznych ćwiczenia na modelkach
-</li>
-<li class="card-courses__item">
-• Laminacja brwi + laminacja rzęs
-</li>
-<li class="card-courses__item">
-Farbowanie brwi i rzęs + pielęgnacja
-</li>
-<li class="card-courses__item">
-• Omówienie zasad bezpieczeństwa i przeciwwskazań
-</li>
-</ul>
-<div class="card-courses__price">1290 zł</div>
-<a href="#" data-fls-button class="card-courses__button button">Zapisz się na kurs <span></span></a>
-</div>
-</div>
-</div>
--->
 					</div>
 				</section>
 				<section class="page__reviews reviews">
@@ -819,6 +650,7 @@ Farbowanie brwi i rzęs + pielęgnacja
 					dziewczyn, które też zaczynały od zera.
 							</div>
 						</div>
+						<div class="elfsight-app-4ebe13e5-9805-49c4-824c-12deba5dcf2b" data-elfsight-app-lazy=""></div>
 					</div>
 				</section>
 				<section class="page__contacts contacts">
@@ -912,6 +744,12 @@ Farbowanie brwi i rzęs + pielęgnacja
 						</div>
 					</div>
 				</section>
+				<div class="popup" id="popup">
+					<div class="popup__content">
+						<p class="popup__message">Dziękujemy za zapisanie się na kurs!</p>
+						<button class="popup__close" id="popupClose">Zamknij</button>
+					</div>
+				</div>
 			</main>
 			<footer data-fls-footer="" class="footer">
 				<div class="footer__container">
@@ -943,17 +781,17 @@ Farbowanie brwi i rzęs + pielęgnacja
 								</div>
 								<ul class="contacts-footer__social social-footer">
 									<li class="social-footer__item">
-										<a href="#" class="social-footer__link">
+										<a href="#" target="_blank" class="social-footer__link">
 											<img src="./assets/img/instagram.svg" alt="instagram">
 										</a>
 									</li>
 									<li class="social-footer__item">
-										<a href="#" class="social-footer__link">
+										<a href="#" target="_blank" class="social-footer__link">
 											<img src="./assets/img/facebook.svg" alt="facebook">
 										</a>
 									</li>
 									<li class="social-footer__item">
-										<a href="#" class="social-footer__link">
+										<a href="#" target="_blank" class="social-footer__link">
 											<img src="./assets/img/whatsapp.svg" alt="Image">
 										</a>
 									</li>
@@ -965,19 +803,20 @@ Farbowanie brwi i rzęs + pielęgnacja
 							<nav class="footer__nav menu-footer">
 								<ul class="menu-footer__list">
 									<li class="menu-footer__item">
-										<a href="#" class="menu-footer__link">Dla kogo</a>
+										<a href="#" data-fls-scrollto=".page__who" data-fls-scrollto-header="" class="menu-footer__link">Dla
+								kogo</a>
 									</li>
 									<li class="menu-footer__item">
-										<a href="#" class="menu-footer__link">Program</a>
+										<a href="#" data-fls-scrollto=".page__training" data-fls-scrollto-header="" class="menu-footer__link">Program</a>
 									</li>
 									<li class="menu-footer__item">
-										<a href="#" class="menu-footer__link">Terminy</a>
+										<a href="#" data-fls-scrollto=".page__timetable" data-fls-scrollto-header="" class="menu-footer__link">Terminy</a>
 									</li>
 									<li class="menu-footer__item">
 										<a href="#" class="menu-footer__link">Cena</a>
 									</li>
 									<li class="menu-footer__item">
-										<a href="#" class="menu-footer__link">FAQ</a>
+										<a href="#" data-fls-scrollto=".page__faq" data-fls-scrollto-header="" class="menu-footer__link">FAQ</a>
 									</li>
 								</ul>
 							</nav>
@@ -988,7 +827,7 @@ Farbowanie brwi i rzęs + pielęgnacja
 							<div class="footer__copy">Copyright © 2025 Educational Beauty Center</div>
 							<span class="footer__all">All Rights Reserved.</span>
 						</div>
-						<a href="#" class="footer__button-up">
+						<a href="#" data-fls-scrollto=".page__hero" data-fls-scrollto-header="" class="footer__button-up">
 							Back to top
 							<span>
 								<img src="./assets/img/arrow.svg" alt="Image">

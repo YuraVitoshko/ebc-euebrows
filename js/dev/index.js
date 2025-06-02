@@ -35,6 +35,11 @@
     fetch(link.href, fetchOpts);
   }
 })();
+function getHash() {
+  if (location.hash) {
+    return location.hash.replace("#", "");
+  }
+}
 let slideUp = (target, duration = 500, showmore = 0) => {
   if (!target.classList.contains("--slide")) {
     target.classList.add("--slide");
@@ -162,6 +167,39 @@ function dataMediaQueries(array, dataSetValue) {
     return { itemsArray, matchMedia };
   });
 }
+const gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
+  const targetBlockElement = document.querySelector(targetBlock);
+  if (targetBlockElement) {
+    let headerItem = "";
+    let headerItemHeight = 0;
+    if (noHeader) {
+      headerItem = "header.header";
+      const headerElement = document.querySelector(headerItem);
+      if (!headerElement.classList.contains("--header-scroll")) {
+        headerElement.style.cssText = `transition-duration: 0s;`;
+        headerElement.classList.add("--header-scroll");
+        headerItemHeight = headerElement.offsetHeight;
+        headerElement.classList.remove("--header-scroll");
+        setTimeout(() => {
+          headerElement.style.cssText = ``;
+        }, 0);
+      } else {
+        headerItemHeight = headerElement.offsetHeight;
+      }
+    }
+    if (document.documentElement.hasAttribute("data-fls-menu-open")) {
+      bodyUnlock();
+      document.documentElement.removeAttribute("data-fls-menu-open");
+    }
+    let targetBlockElementPosition = targetBlockElement.getBoundingClientRect().top + scrollY;
+    targetBlockElementPosition = headerItemHeight ? targetBlockElementPosition - headerItemHeight : targetBlockElementPosition;
+    targetBlockElementPosition = offsetTop ? targetBlockElementPosition - offsetTop : targetBlockElementPosition;
+    window.scrollTo({
+      top: targetBlockElementPosition,
+      behavior: "smooth"
+    });
+  }
+};
 function spollers() {
   const spollersArray = document.querySelectorAll("[data-fls-spollers]");
   if (spollersArray.length > 0) {
@@ -5056,6 +5094,69 @@ class DynamicAdapt {
 if (document.querySelector("[data-fls-dynamic]")) {
   window.addEventListener("load", () => new DynamicAdapt());
 }
+function pageNavigation() {
+  document.addEventListener("click", pageNavigationAction);
+  document.addEventListener("watcherCallback", pageNavigationAction);
+  function pageNavigationAction(e) {
+    if (e.type === "click") {
+      const targetElement = e.target;
+      if (targetElement.closest("[data-fls-scrollto]")) {
+        const gotoLink = targetElement.closest("[data-fls-scrollto]");
+        const gotoLinkSelector = gotoLink.dataset.flsScrollto ? gotoLink.dataset.flsScrollto : "";
+        const noHeader = gotoLink.hasAttribute("data-fls-scrollto-header") ? true : false;
+        const gotoSpeed = gotoLink.dataset.flsScrolltoSpeed ? gotoLink.dataset.flsScrolltoSpeed : 500;
+        const offsetTop = gotoLink.dataset.flsScrolltoTop ? parseInt(gotoLink.dataset.flsScrolltoTop) : 0;
+        if (window.fullpage) {
+          const fullpageSection = document.querySelector(`${gotoLinkSelector}`).closest("[data-fls-fullpage-section]");
+          const fullpageSectionId = fullpageSection ? +fullpageSection.dataset.flsFullpageId : null;
+          if (fullpageSectionId !== null) {
+            window.fullpage.switchingSection(fullpageSectionId);
+            if (document.documentElement.hasAttribute("data-fls-menu-open")) {
+              bodyUnlock();
+              document.documentElement.removeAttribute("data-fls-menu-open");
+            }
+          }
+        } else {
+          gotoBlock(gotoLinkSelector, noHeader, gotoSpeed, offsetTop);
+        }
+        e.preventDefault();
+      }
+    } else if (e.type === "watcherCallback" && e.detail) {
+      const entry = e.detail.entry;
+      const targetElement = entry.target;
+      if (targetElement.dataset.flsWatcher === "navigator") {
+        document.querySelector(`[data-fls-scrollto].--navigator-active`);
+        let navigatorCurrentItem;
+        if (targetElement.id && document.querySelector(`[data-fls-scrollto="#${targetElement.id}"]`)) {
+          navigatorCurrentItem = document.querySelector(`[data-fls-scrollto="#${targetElement.id}"]`);
+        } else if (targetElement.classList.length) {
+          for (let index = 0; index < targetElement.classList.length; index++) {
+            const element = targetElement.classList[index];
+            if (document.querySelector(`[data-fls-scrollto=".${element}"]`)) {
+              navigatorCurrentItem = document.querySelector(`[data-fls-scrollto=".${element}"]`);
+              break;
+            }
+          }
+        }
+        if (entry.isIntersecting) {
+          navigatorCurrentItem ? navigatorCurrentItem.classList.add("--navigator-active") : null;
+        } else {
+          navigatorCurrentItem ? navigatorCurrentItem.classList.remove("--navigator-active") : null;
+        }
+      }
+    }
+  }
+  if (getHash()) {
+    let goToHash;
+    if (document.querySelector(`#${getHash()}`)) {
+      goToHash = `#${getHash()}`;
+    } else if (document.querySelector(`.${getHash()}`)) {
+      goToHash = `.${getHash()}`;
+    }
+    goToHash ? gotoBlock(goToHash) : null;
+  }
+}
+document.querySelector("[data-fls-scrollto]") ? window.addEventListener("load", pageNavigation) : null;
 const marquee = () => {
   const $marqueeArray = document.querySelectorAll("[data-fls-marquee]");
   const ATTR_NAMES = {
@@ -7014,12 +7115,12 @@ function requireIntlTelInput() {
           Object.values(instances).forEach((instance) => instance[method](...args));
         };
         var Iti = class {
-          constructor(input2, customOptions = {}) {
+          constructor(input, customOptions = {}) {
             this.id = id++;
-            this.telInput = input2;
+            this.telInput = input;
             this.highlightedItem = null;
             this.options = Object.assign({}, defaults2, customOptions);
-            this.hadInitialPlaceholder = Boolean(input2.getAttribute("placeholder"));
+            this.hadInitialPlaceholder = Boolean(input.getAttribute("placeholder"));
           }
           //* Can't be private as it's called from intlTelInput convenience wrapper.
           _init() {
@@ -8234,9 +8335,9 @@ function requireIntlTelInput() {
                 label.removeEventListener("click", this._handleLabelClick);
               }
             }
-            const { form: form2 } = this.telInput;
-            if (this._handleHiddenInputSubmit && form2) {
-              form2.removeEventListener("submit", this._handleHiddenInputSubmit);
+            const { form } = this.telInput;
+            if (this._handleHiddenInputSubmit && form) {
+              form.removeEventListener("submit", this._handleHiddenInputSubmit);
             }
             this.telInput.removeEventListener("input", this._handleInputEvent);
             if (this._handleKeydownEvent) {
@@ -8398,10 +8499,10 @@ function requireIntlTelInput() {
           return null;
         };
         var intlTelInput2 = Object.assign(
-          (input2, options) => {
-            const iti = new Iti(input2, options);
+          (input, options) => {
+            const iti = new Iti(input, options);
             iti._init();
-            input2.setAttribute("data-intl-tel-input-id", iti.id.toString());
+            input.setAttribute("data-intl-tel-input-id", iti.id.toString());
             intlTelInput2.instances[iti.id] = iti;
             return iti;
           },
@@ -8412,8 +8513,8 @@ function requireIntlTelInput() {
             //* Get the country data object.
             getCountryData: () => data_default,
             //* A getter for the plugin instance.
-            getInstance: (input2) => {
-              const id2 = input2.getAttribute("data-intl-tel-input-id");
+            getInstance: (input) => {
+              const id2 = input.getAttribute("data-intl-tel-input-id");
               return id2 ? intlTelInput2.instances[id2] : null;
             },
             //* A map from instance ID to instance object.
@@ -8434,14 +8535,17 @@ function requireIntlTelInput() {
 }
 var intlTelInputExports = requireIntlTelInput();
 const intlTelInput = /* @__PURE__ */ getDefaultExportFromCjs(intlTelInputExports);
-const input = document.querySelector("#phone");
-intlTelInput(input, {
-  initialCountry: "pl",
-  geoIpLookup: (callback) => {
-    fetch("https://ipapi.co/json").then((res) => res.json()).then((data) => callback(data.country_code)).catch(() => callback("us"));
-  },
-  utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js"
-  // для форматування
+document.addEventListener("DOMContentLoaded", function() {
+  const input = document.querySelector("#phone");
+  if (input) {
+    intlTelInput(input, {
+      initialCountry: "pl",
+      geoIpLookup: (callback) => {
+        fetch("https://ipapi.co/json").then((res) => res.json()).then((data) => callback(data.country_code)).catch(() => callback("us"));
+      },
+      utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js"
+    });
+  }
 });
 document.querySelectorAll(".social-footer__link").forEach((link) => {
   link.addEventListener("mouseenter", () => {
@@ -8450,6 +8554,53 @@ document.querySelectorAll(".social-footer__link").forEach((link) => {
   link.addEventListener("mouseleave", () => {
     link.closest(".social-footer__item").classList.remove("hovered");
   });
+});
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.querySelector(".contacts__form");
+  const popup = document.getElementById("popup");
+  const popupClose = document.getElementById("popupClose");
+  if (form) {
+    let closePopup2 = function() {
+      popup.classList.remove("popup--active");
+      document.body.classList.remove("body--locked");
+    };
+    var closePopup = closePopup2;
+    const phoneInput = form.querySelector('input[name="tel"]');
+    const phoneLine = form.querySelector(".form__line--phone");
+    phoneInput.addEventListener("input", function() {
+      this.value = this.value.replace(/\D/g, "");
+    });
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      let isValid = true;
+      const phoneValue = phoneInput.value.trim();
+      if (/^\d{9}$/.test(phoneValue)) {
+        phoneLine.classList.remove("error");
+        phoneLine.classList.add("success");
+      } else {
+        phoneLine.classList.remove("success");
+        phoneLine.classList.add("error");
+        isValid = false;
+      }
+      if (isValid) {
+        popup.classList.add("popup--active");
+        document.body.classList.add("body--locked");
+        form.reset();
+        phoneLine.classList.remove("success");
+      }
+    });
+    popupClose.addEventListener("click", closePopup2);
+    popup.addEventListener("click", function(e) {
+      if (!e.target.closest(".popup__content")) {
+        closePopup2();
+      }
+    });
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape" && popup.classList.contains("popup--active")) {
+        closePopup2();
+      }
+    });
+  }
 });
 document.addEventListener("DOMContentLoaded", function() {
   const navvControls = document.querySelector(".nav-video");
@@ -8537,29 +8688,17 @@ document.addEventListener("DOMContentLoaded", function() {
     navControls.classList.add("hidden");
     clearTimeout(hideControlsTimeout);
   });
-});
-const form = document.querySelector(".contacts__form");
-if (form) {
-  form.querySelector('input[name="name"]');
-  const phoneInput = form.querySelector('input[name="tel"]');
-  const phoneLine = form.querySelector(".form__line--phone");
-  phoneInput.addEventListener("input", function() {
-    this.value = this.value.replace(/\D/g, "");
-  });
-  form.addEventListener("submit", function(e) {
-    e.preventDefault();
-    let isValid = true;
-    const phoneValue = phoneInput.value.trim();
-    if (/^\d{9}$/.test(phoneValue)) {
-      phoneLine.classList.remove("error");
-      phoneLine.classList.add("success");
+  let lastTapTime = 0;
+  videoContainer.addEventListener("touchstart", (e) => {
+    const currentTime = (/* @__PURE__ */ new Date()).getTime();
+    const tapInterval = currentTime - lastTapTime;
+    if (tapInterval < 300) return;
+    lastTapTime = currentTime;
+    if (navControls.classList.contains("hidden")) {
+      showControls();
     } else {
-      phoneLine.classList.remove("success");
-      phoneLine.classList.add("error");
-      isValid = false;
-    }
-    if (isValid) {
-      console.log("✅ Форма валідна!");
+      navControls.classList.add("hidden");
+      clearTimeout(hideControlsTimeout);
     }
   });
-}
+});
