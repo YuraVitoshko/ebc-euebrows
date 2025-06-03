@@ -3323,7 +3323,7 @@ body.body--locked {
     background-color: #323230;
   }
   .button:hover::after {
-    transform: rotate(45deg);
+    transform: rotate(135deg);
   }
   .card-timetable:hover {
     border-left: 0.375rem solid #454C52;
