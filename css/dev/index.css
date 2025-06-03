@@ -2258,6 +2258,15 @@ body {
 .training__spollers {
   margin-bottom: 3rem;
 }
+.training__button {
+  opacity: 0;
+  transform: translateY(20%);
+  transition: opacity 0.8s, transform 0.8s;
+}
+.training__button.--watcher-view {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .spollers {
   display: grid;
