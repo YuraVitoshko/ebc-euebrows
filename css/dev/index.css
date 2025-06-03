@@ -1882,17 +1882,6 @@ body {
   align-items: center;
   column-gap: 2rem;
 }
-/* Анімація */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(1.875rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 /* Початковий стан */
 .hero__title,
 .hero__text,
@@ -1919,16 +1908,6 @@ body {
   animation-delay: 0.8s;
 }
 
-@keyframes media {
-  from {
-    opacity: 0;
-    transform: translateY(1.875rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 .media-hero__image-left,
 .media-hero__img,
 .media-hero__video {
@@ -1989,6 +1968,27 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+/* Анімація */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.875rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes media {
+  from {
+    opacity: 0;
+    transform: translateY(1.875rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .video {
   position: relative;
@@ -2264,13 +2264,16 @@ body {
 }
 .spollers__item {
   border-bottom: 0.0625rem solid #CED2D6;
-}
-.spollers__item--anim {
   opacity: 0;
-  transform: translateY(20%);
   transition: opacity 0.8s, transform 0.8s;
 }
-.spollers__item--anim.--watcher-view {
+.spollers__item--anim {
+  transform: translateY(20%);
+}
+.spollers__item--open-anim {
+  transform: translateY(1.875rem);
+}
+.spollers__item.--watcher-view {
   opacity: 1;
   transform: translateY(0);
 }
@@ -3022,6 +3025,15 @@ body.body--locked {
   .advantages {
     padding-top: 4.375rem;
     padding-bottom: 4.375rem;
+  }
+  .advantages__slider {
+    opacity: 0;
+    transform: translateY(7%);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+  .advantages__slider.--watcher-view {
+    opacity: 1;
+    transform: translateY(0);
   }
   .advantages__wrapper {
     margin-bottom: 4rem;
