@@ -4,10 +4,12 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
-		<script src="https://static.elfsight.com/platform/platform.js?v=1748957044569" async></script>
-		<title>Home Page</title>
-		<script type="module" crossorigin="" src="./js/index.min.js?v=1748957044569"></script>
-		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1748957044569">
+		<script src="https://static.elfsight.com/platform/platform.js?v=1749052620841" async></script>
+		<title>Education Beauty Center</title>
+		<script type="module" crossorigin="" src="./js/index.min.js?v=1749052620841"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/app.min.js?v=1749052620841">
+		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1749052620841">
+		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1749052620841">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -997,5 +999,50 @@ class="card-courses__button button">Zapisz się na kurs
 				</div>
 			</footer>
 		</div>
+		<ul id="fls-dev-panel">
+			<li>
+				<a href="page-thanks.html">page-thanks</a>
+			</li>
+			<li>
+				<a href="index.html">index</a>
+			</li>
+		</ul>
+		<style>
+			#fls-dev-panel{
+				position: fixed;
+				left: 10px;
+				padding: 15px 25px 15px 15px;
+				border-radius: 0 10px 10px 0;
+				top: 10%;
+				color: #ffffff;
+				background-color: rgba(51, 51, 51, 0.5);
+				transform: translate(-100%, 0px);
+				max-height: 80svh;
+				overflow: auto;
+				transition: all 300ms;
+				z-index: 9999;
+				font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+			}
+			#fls-dev-panel li{
+				list-style:none;
+			}
+			#fls-dev-panel hr{
+				border-bottom: 1px solid;
+			}
+			#fls-dev-panel:hover{
+				left: 0px;
+				transform: translate(0, 0);
+			}
+			#fls-dev-panel a{
+				text-decoration: none;
+				color: inherit;
+			}
+			#fls-dev-panel a:hover {
+				text-decoration: underline;
+			}
+			#fls-dev-panel li:not(:last-child) {
+				margin-bottom: 10px;
+			}
+		</style>
 	</body>
 </html>
