@@ -8189,8 +8189,6 @@ document.querySelectorAll(".social-footer__link").forEach((link) => {
 });
 document.addEventListener("DOMContentLoaded", function() {
   const form = document.querySelector(".contacts__form");
-  document.getElementById("popup");
-  document.getElementById("popupClose");
   if (form) {
     const phoneInput = form.querySelector('input[name="tel"]');
     const phoneLine = form.querySelector(".form__line--phone");
