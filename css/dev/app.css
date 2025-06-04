@@ -187,7 +187,7 @@ body {
 }
 .header__logo {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   flex: 0 0 7.5rem;
   max-width: 7.5rem;
 }
