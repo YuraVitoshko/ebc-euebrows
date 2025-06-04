@@ -186,6 +186,8 @@ body {
   column-gap: 1.875rem;
 }
 .header__logo {
+  position: relative;
+  z-index: 2;
   flex: 0 0 7.5rem;
   max-width: 7.5rem;
 }
