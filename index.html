@@ -4,12 +4,12 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
-		<script src="https://static.elfsight.com/platform/platform.js?v=1749054676691" async></script>
+		<script src="https://static.elfsight.com/platform/platform.js?v=1749060387227" async></script>
 		<title>Education Beauty Center</title>
-		<script type="module" crossorigin="" src="./js/index.min.js?v=1749054676691"></script>
-		<link rel="modulepreload" crossorigin="" href="./js/app.min.js?v=1749054676691">
-		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1749054676691">
-		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1749054676691">
+		<script type="module" crossorigin="" src="./js/index.min.js?v=1749060387227"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/app.min.js?v=1749060387227">
+		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1749060387227">
+		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1749060387227">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -448,7 +448,7 @@
 						</div>
 					</div>
 				</section>
-				<div data-fls-marquee="" data-fls-marquee-pause-mouse-enter="" data-fls-marquee-space="100" data-fls-marquee-speed="400" class="running-line">
+				<div data-fls-marquee="" data-fls-marquee-pause-mouse-enter="" data-fls-marquee-space="100" data-fls-marquee-speed="" class="running-line">
 					<div class="running-line__item">
 						<a href="#" class="running-line__logo">
 							<img src="./assets/img/01.svg" alt="Logo">
@@ -764,34 +764,14 @@ class="card-courses__button button">Zapisz się na kurs
 				<section class="page__contacts contacts">
 					<div class="contacts__container">
 						<div class="contacts__header-block header-block">
-							<h2 data-fls-watcher="" data-fls-watcher-threshold="0.5" data-fls-watcher-once="" class="header-block__title title">Zapisz się na kurs i rozpocznij nowy etap w swojej karierze!</h2>
-							<div data-fls-watcher="" data-fls-watcher-threshold="0.5" data-fls-watcher-once="" class="header-block__text">
+							<h2 data-fls-watcher="" data-fls-watcher-threshold="0.5" data-fls-watcher-once="" class="header-block__title title title--center">Zapisz się na kurs i rozpocznij nowy etap w swojej karierze!</h2>
+							<div data-fls-watcher="" data-fls-watcher-threshold="0.5" data-fls-watcher-once="" class="header-block__text header-block__text--none">
 								<p>
 									Wypełnij krótki formularz, a nasz zespół skontaktuje się z Tobą, by potwierdzić szczegóły i dostępność
 						miejsc.
 								</p>
 							</div>
 						</div>
-						<!--
-<form class="contacts__form form">
-<div class="form__top">
-<div class="form__line form__line--name">
-<input type="text" name="name" placeholder="Twoje imię" class="form__input input">
-</div>
-<div class="form__box">
-<div class="form__line form__line--phone">
-<input id="phone" type="tel" name="tel" placeholder="885-111-222" class="form__input input">
-</div>
-<span class="form__valid">Pole jest wymagane.</span>
-</div>
-</div>
-<div class="form__bottom">
-<textarea class="form__textarea" placeholder="Jakie informacje Cię interesują?"></textarea>
-<button data-fls-button type="submit" class="form__button button">Zapisz się na kurs
-<span></span></button>
-</div>
-</form>
--->
 						<form data-fls-watcher="" data-fls-watcher-threshold="0.1" data-fls-watcher-once="" class="contacts__form form" action="send.php" method="POST">
 							<div class="form__top">
 								<div class="form__box">
@@ -808,7 +788,7 @@ class="card-courses__button button">Zapisz się na kurs
 								</div>
 							</div>
 							<div class="form__bottom">
-								<textarea class="form__textarea" maxlength="300" placeholder="Jakie informacje Cię interesują?"></textarea>
+								<textarea class="form__textarea" maxlength="500" placeholder="Jakie informacje Cię interesują?"></textarea>
 								<button data-fls-button="" type="submit" class="form__button button">Zapisz się na kurs</button>
 							</div>
 						</form>
@@ -907,25 +887,6 @@ class="card-courses__button button">Zapisz się na kurs
 								<div class="contacts-footer__mail">
 									<a href="mailto:beautycenter.education@gmail.com">beautycenter.education@gmail.com</a>
 								</div>
-								<!--
-<ul class="contacts-footer__social social-footer">
-<li class="social-footer__item">
-<a href="#" target="_blank" class="social-footer__link">
-<img src="@img/icons/instagram.svg" alt="instagram">
-</a>
-</li>
-<li class="social-footer__item">
-<a href="#" target="_blank" class="social-footer__link">
-<img src="@img/icons/facebook.svg" alt="facebook">
-</a>
-</li>
-<li class="social-footer__item">
-<a href="#" target="_blank" class="social-footer__link">
-<img src="@img/icons/whatsapp.svg" alt="Image">
-</a>
-</li>
-</ul>
--->
 								<ul class="contacts-footer__social social-footer">
 									<li class="social-footer__item">
 										<a href="#" target="_blank" class="social-footer__link">
@@ -992,7 +953,9 @@ class="card-courses__button button">Zapisz się na kurs
 						<a href="#" data-fls-scrollto=".page__hero" data-fls-scrollto-header="" class="footer__button-up">
 							Back to top
 							<span>
-								<img src="./assets/img/arrow.svg" alt="Image">
+								<svg width="12" height="12" viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M0.263604 11.7364C0.615076 12.0879 1.18492 12.0879 1.5364 11.7364L10.2 3.07279V9.9C10.2 10.3971 10.6029 10.8 11.1 10.8C11.5971 10.8 12 10.3971 12 9.9V0.9C12 0.402944 11.5971 -4.76837e-07 11.1 -4.76837e-07H2.1C1.60294 -4.76837e-07 1.2 0.402944 1.2 0.9C1.2 1.39706 1.60294 1.8 2.1 1.8H8.92721L0.263604 10.4636C-0.087868 10.8151 -0.087868 11.3849 0.263604 11.7364Z" fill="#FAFAFA"></path>
+								</svg>
 							</span>
 						</a>
 					</div>
