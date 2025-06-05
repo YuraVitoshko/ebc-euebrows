@@ -4648,7 +4648,7 @@ function initSliders() {
           },
           breakpoints: {
             360: {
-              slidesPerView: 1.1,
+              slidesPerView: 1.3,
               spaceBetween: 16
             },
             500: {
