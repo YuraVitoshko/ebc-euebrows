@@ -8198,7 +8198,7 @@ document.addEventListener("DOMContentLoaded", function() {
       this.value = this.value.replace(/\D/g, "");
     });
     form.addEventListener("submit", function(e) {
-      e.preventDefault();
+      let isValid = true;
       const phoneValue = phoneInput.value.trim();
       if (/^\d{9}$/.test(phoneValue)) {
         phoneLine.classList.remove("error");
@@ -8206,6 +8206,7 @@ document.addEventListener("DOMContentLoaded", function() {
       } else {
         phoneLine.classList.remove("success");
         phoneLine.classList.add("error");
+        isValid = false;
       }
       const nameValue = nameInput.value.trim();
       if (/^[A-Za-zА-Яа-яІіЇїЄєҐґʼ’\-]{2,}$/.test(nameValue)) {
@@ -8214,6 +8215,10 @@ document.addEventListener("DOMContentLoaded", function() {
       } else {
         nameLine.classList.remove("success");
         nameLine.classList.add("error");
+        isValid = false;
+      }
+      if (!isValid) {
+        e.preventDefault();
       }
     });
   }

@@ -2481,6 +2481,10 @@ textarea::placeholder {
     padding-left: 0.25rem;
     padding-right: 0.25rem;
   }
+  .examples__header-block {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
   .examples__images {
     gap: 0.25rem;
     grid-template-columns: repeat(2, 1fr);
