@@ -2300,8 +2300,12 @@ textarea {
   width: 100%;
   caret-color: inherit;
   padding: 0.75rem 1rem;
+  border-radius: 1.5rem;
   outline: none;
   transition: border-color 0.3s;
+}
+.input--pl {
+  padding-left: 9.375rem;
 }
 
 .input::placeholder {
@@ -2309,7 +2313,7 @@ textarea {
   line-height: 1.5;
   color: #9EA5AD;
 }
-.input:focus::placeholder {
+.input:focus .form__label-tel {
   opacity: 0;
 }
 
@@ -2331,10 +2335,6 @@ textarea::placeholder {
 
 .iti__arrow {
   display: none;
-}
-
-#phone {
-  padding-left: 2.625rem !important;
 }
 
 .iti__search-input {

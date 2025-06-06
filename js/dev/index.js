@@ -8172,6 +8172,7 @@ document.addEventListener("DOMContentLoaded", function() {
   if (input) {
     intlTelInput(input, {
       initialCountry: "pl",
+      separateDialCode: true,
       geoIpLookup: (callback) => {
         fetch("https://ipapi.co/json").then((res) => res.json()).then((data) => callback(data.country_code)).catch(() => callback("us"));
       },
@@ -8209,7 +8210,7 @@ document.addEventListener("DOMContentLoaded", function() {
         isValid = false;
       }
       const nameValue = nameInput.value.trim();
-      if (/^[A-Za-zА-Яа-яІіЇїЄєҐґʼ’\-]{2,}$/.test(nameValue)) {
+      if (/^[A-Za-zА-Яа-яІіЇїЄєҐґʼ’\-]{2,}( [A-Za-zА-Яа-яІіЇїЄєҐґʼ’\-]{2,})*$/.test(nameValue)) {
         nameLine.classList.remove("error");
         nameLine.classList.add("success");
       } else {
