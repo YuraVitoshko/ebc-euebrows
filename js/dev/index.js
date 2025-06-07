@@ -8132,11 +8132,11 @@ function requireIntlTelInput() {
         };
         var intlTelInput2 = Object.assign(
           (input, options) => {
-            const iti = new Iti(input, options);
-            iti._init();
-            input.setAttribute("data-intl-tel-input-id", iti.id.toString());
-            intlTelInput2.instances[iti.id] = iti;
-            return iti;
+            const iti2 = new Iti(input, options);
+            iti2._init();
+            input.setAttribute("data-intl-tel-input-id", iti2.id.toString());
+            intlTelInput2.instances[iti2.id] = iti2;
+            return iti2;
           },
           {
             defaults: defaults2,
@@ -8167,41 +8167,29 @@ function requireIntlTelInput() {
 }
 var intlTelInputExports = requireIntlTelInput();
 const intlTelInput = /* @__PURE__ */ getDefaultExportFromCjs(intlTelInputExports);
+let iti = null;
 document.addEventListener("DOMContentLoaded", function() {
   const input = document.querySelector("#phone");
   if (input) {
-    intlTelInput(input, {
+    iti = intlTelInput(input, {
       initialCountry: "pl",
       separateDialCode: true,
       geoIpLookup: (callback) => {
         fetch("https://ipapi.co/json").then((res) => res.json()).then((data) => callback(data.country_code)).catch(() => callback("us"));
       },
-      utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js"
+      utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/utils.js"
     });
   }
-});
-document.querySelectorAll(".social-footer__link").forEach((link) => {
-  link.addEventListener("mouseenter", () => {
-    link.closest(".social-footer__item").classList.add("hovered");
-  });
-  link.addEventListener("mouseleave", () => {
-    link.closest(".social-footer__item").classList.remove("hovered");
-  });
-});
-document.addEventListener("DOMContentLoaded", function() {
   const form = document.querySelector(".contacts__form");
   if (form) {
-    const phoneInput = form.querySelector('input[name="tel"]');
+    form.querySelector('input[name="tel"]');
     const phoneLine = form.querySelector(".form__line--phone");
     const nameInput = form.querySelector('input[name="name"]');
     const nameLine = form.querySelector(".form__line--name");
-    phoneInput.addEventListener("input", function() {
-      this.value = this.value.replace(/\D/g, "");
-    });
+    const phoneFullInput = form.querySelector('input[name="tel-send"]');
     form.addEventListener("submit", function(e) {
       let isValid = true;
-      const phoneValue = phoneInput.value.trim();
-      if (/^\d{9}$/.test(phoneValue)) {
+      if (iti && iti.isValidNumber()) {
         phoneLine.classList.remove("error");
         phoneLine.classList.add("success");
       } else {
@@ -8218,11 +8206,23 @@ document.addEventListener("DOMContentLoaded", function() {
         nameLine.classList.add("error");
         isValid = false;
       }
+      if (iti && phoneFullInput) {
+        const fullNumber = iti.getNumber();
+        phoneFullInput.value = fullNumber;
+      }
       if (!isValid) {
         e.preventDefault();
       }
     });
   }
+});
+document.querySelectorAll(".social-footer__link").forEach((link) => {
+  link.addEventListener("mouseenter", () => {
+    link.closest(".social-footer__item").classList.add("hovered");
+  });
+  link.addEventListener("mouseleave", () => {
+    link.closest(".social-footer__item").classList.remove("hovered");
+  });
 });
 document.addEventListener("DOMContentLoaded", function() {
   const navvControls = document.querySelector(".nav-video");
