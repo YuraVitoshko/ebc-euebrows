@@ -14548,26 +14548,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const videoContainer = document.querySelector(".video");
   let hideControlsTimeout;
   videoPlayer.muted = true;
-  playButton.style.display = "block";
-  pauseButton.style.display = "none";
-  playButton.addEventListener("click", () => {
-    videoPlayer.play();
-    playButton.style.display = "none";
-    pauseButton.style.display = "block";
-  });
-  pauseButton.addEventListener("click", () => {
-    videoPlayer.pause();
-    playButton.style.display = "block";
-    pauseButton.style.display = "none";
-  });
-  videoPlayer.addEventListener("play", () => {
-    playButton.style.display = "none";
-    pauseButton.style.display = "block";
-  });
-  videoPlayer.addEventListener("pause", () => {
-    playButton.style.display = "block";
-    pauseButton.style.display = "none";
-  });
+  function updatePlayPauseButtons() {
+    if (videoPlayer.paused) {
+      playButton.style.display = "block";
+      pauseButton.style.display = "none";
+    } else {
+      playButton.style.display = "none";
+      pauseButton.style.display = "block";
+    }
+  }
+  updatePlayPauseButtons();
+  playButton.addEventListener("click", () => videoPlayer.play());
+  pauseButton.addEventListener("click", () => videoPlayer.pause());
+  videoPlayer.addEventListener("play", updatePlayPauseButtons);
+  videoPlayer.addEventListener("pause", updatePlayPauseButtons);
   muteButton.addEventListener("click", () => {
     videoPlayer.muted = !videoPlayer.muted;
     muteButton.innerHTML = videoPlayer.muted ? '<img src="assets/img/icons/sound-off.svg" alt="Mute">' : '<img src="assets/img/icons/sound-on.svg" alt="Sound-on">';
