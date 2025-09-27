@@ -14538,7 +14538,7 @@ document.querySelectorAll(".social-footer__link").forEach((link) => {
     link.closest(".social-footer__item").classList.remove("hovered");
   });
 });
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function() {
   const navvControls = document.querySelector(".nav-video");
   const videoPlayer = document.getElementById("video-player");
   const playButton = document.getElementById("play");
@@ -14547,66 +14547,109 @@ document.addEventListener("DOMContentLoaded", () => {
   const fullscreenButton = document.getElementById("fullscreen");
   const videoContainer = document.querySelector(".video");
   let hideControlsTimeout;
+  const isMobile = /iPhone|iPad|iPod|Android|Mobile|Windows Phone/i.test(navigator.userAgent);
+  muteButton.innerHTML = '<img src="assets/img/icons/sound-off.svg" alt="Mute">';
   videoPlayer.muted = true;
-  videoPlayer.pause();
-  updatePlayPauseButtons();
-  function updatePlayPauseButtons() {
-    if (videoPlayer.paused) {
-      playButton.style.display = "block";
-      pauseButton.style.display = "none";
-    } else {
+  if (!isMobile) {
+    videoPlayer.play().then(() => {
       playButton.style.display = "none";
       pauseButton.style.display = "block";
-    }
-  }
-  playButton.addEventListener("click", () => {
-    videoPlayer.play();
-    updatePlayPauseButtons();
-  });
-  pauseButton.addEventListener("click", () => {
+      navvControls.classList.add("hidden");
+    }).catch((err) => {
+      console.warn("Автовідтворення заблоковане:", err);
+      playButton.style.display = "block";
+      pauseButton.style.display = "none";
+      navvControls.classList.remove("hidden");
+    });
+  } else {
     videoPlayer.pause();
-    updatePlayPauseButtons();
+    playButton.style.display = "block";
+    pauseButton.style.display = "none";
+    navvControls.classList.remove("hidden");
+  }
+  videoPlayer.addEventListener("play", function() {
+    playButton.style.display = "none";
+    pauseButton.style.display = "block";
+    if (!videoPlayer.muted) {
+      muteButton.innerHTML = '<img src="assets/img/icons/sound-on.svg" alt="Sound-on">';
+    }
   });
-  videoPlayer.addEventListener("play", updatePlayPauseButtons);
-  videoPlayer.addEventListener("pause", updatePlayPauseButtons);
-  videoPlayer.addEventListener("touchstart", updatePlayPauseButtons);
-  muteButton.addEventListener("click", () => {
-    videoPlayer.muted = !videoPlayer.muted;
-    muteButton.innerHTML = videoPlayer.muted ? '<img src="assets/img/icons/sound-off.svg" alt="Mute">' : '<img src="assets/img/icons/sound-on.svg" alt="Sound-on">';
+  videoPlayer.addEventListener("pause", function() {
+    playButton.style.display = "block";
+    pauseButton.style.display = "none";
+    if (videoPlayer.muted) {
+      muteButton.innerHTML = '<img src="assets/img/icons/sound-off.svg" alt="Mute">';
+    }
   });
-  fullscreenButton.addEventListener("click", () => {
-    if (videoPlayer.webkitEnterFullscreen) {
-      videoPlayer.webkitEnterFullscreen();
-    } else if (videoContainer.requestFullscreen) {
-      videoContainer.requestFullscreen();
-    } else if (videoContainer.webkitRequestFullscreen) {
-      videoContainer.webkitRequestFullscreen();
-    } else if (videoContainer.msRequestFullscreen) {
-      videoContainer.msRequestFullscreen();
+  playButton.addEventListener("click", function() {
+    videoPlayer.play();
+    playButton.style.display = "none";
+    pauseButton.style.display = "block";
+  });
+  pauseButton.addEventListener("click", function() {
+    videoPlayer.pause();
+    pauseButton.style.display = "none";
+    playButton.style.display = "block";
+  });
+  muteButton.addEventListener("click", function() {
+    if (videoPlayer.muted) {
+      videoPlayer.muted = false;
+      muteButton.innerHTML = '<img src="assets/img/icons/sound-on.svg" alt="Sound-on">';
+    } else {
+      videoPlayer.muted = true;
+      muteButton.innerHTML = '<img src="assets/img/icons/sound-off.svg" alt="Mute">';
+    }
+  });
+  fullscreenButton.addEventListener("click", function() {
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+      if (videoPlayer.requestFullscreen) {
+        videoPlayer.requestFullscreen();
+      } else if (videoPlayer.webkitRequestFullscreen) {
+        videoPlayer.webkitRequestFullscreen();
+      } else if (videoPlayer.webkitEnterFullscreen) {
+        videoPlayer.webkitEnterFullscreen();
+      } else if (videoPlayer.msRequestFullscreen) {
+        videoPlayer.msRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
     }
   });
   function showControls() {
     navvControls.classList.remove("hidden");
-    navvControls.style.opacity = "1";
-    navvControls.style.pointerEvents = "auto";
     clearTimeout(hideControlsTimeout);
-    hideControlsTimeout = setTimeout(hideControls, 3e3);
+    hideControlsTimeout = setTimeout(() => {
+      navvControls.classList.add("hidden");
+    }, 2e3);
   }
-  function hideControls() {
+  videoContainer.addEventListener("mouseenter", () => {
+    showControls();
+  });
+  videoContainer.addEventListener("mousemove", () => {
+    showControls();
+  });
+  videoContainer.addEventListener("mouseleave", () => {
     navvControls.classList.add("hidden");
-    navvControls.style.opacity = "0";
-    navvControls.style.pointerEvents = "none";
-  }
-  videoContainer.addEventListener("mouseenter", showControls);
-  videoContainer.addEventListener("mousemove", showControls);
-  videoContainer.addEventListener("mouseleave", hideControls);
-  let lastTap = 0;
-  videoContainer.addEventListener("touchstart", () => {
-    const now2 = Date.now();
-    if (now2 - lastTap < 300) return;
-    lastTap = now2;
-    if (navvControls.classList.contains("hidden")) showControls();
-    else hideControls();
+    clearTimeout(hideControlsTimeout);
+  });
+  let lastTapTime = 0;
+  videoContainer.addEventListener("touchstart", (e) => {
+    const currentTime = (/* @__PURE__ */ new Date()).getTime();
+    const tapInterval = currentTime - lastTapTime;
+    if (tapInterval < 300) return;
+    lastTapTime = currentTime;
+    if (navvControls.classList.contains("hidden")) {
+      showControls();
+    } else {
+      navvControls.classList.add("hidden");
+      clearTimeout(hideControlsTimeout);
+    }
   });
 });
 document.addEventListener("DOMContentLoaded", () => {
