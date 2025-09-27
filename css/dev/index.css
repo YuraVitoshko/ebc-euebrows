@@ -2718,6 +2718,8 @@ textarea::placeholder {
     margin-top: 0;
     padding-left: 0;
     padding-right: 0;
+    height: 100%;
+    width: 100%;
   }
   .hero__content {
     display: grid;
@@ -2900,9 +2902,6 @@ textarea::placeholder {
   }
   .card-timetable {
     padding: 1rem;
-  }
-  .contacts__media {
-    height: 20rem;
   }
 }
 @media (max-width: 22.5em){
