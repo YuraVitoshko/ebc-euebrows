@@ -14548,6 +14548,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const videoContainer = document.querySelector(".video");
   let hideControlsTimeout;
   videoPlayer.muted = true;
+  videoPlayer.pause();
+  updatePlayPauseButtons();
   function updatePlayPauseButtons() {
     if (videoPlayer.paused) {
       playButton.style.display = "block";
@@ -14557,9 +14559,14 @@ document.addEventListener("DOMContentLoaded", () => {
       pauseButton.style.display = "block";
     }
   }
-  updatePlayPauseButtons();
-  playButton.addEventListener("click", () => videoPlayer.play());
-  pauseButton.addEventListener("click", () => videoPlayer.pause());
+  playButton.addEventListener("click", () => {
+    videoPlayer.play();
+    updatePlayPauseButtons();
+  });
+  pauseButton.addEventListener("click", () => {
+    videoPlayer.pause();
+    updatePlayPauseButtons();
+  });
   videoPlayer.addEventListener("play", updatePlayPauseButtons);
   videoPlayer.addEventListener("pause", updatePlayPauseButtons);
   videoPlayer.addEventListener("touchstart", updatePlayPauseButtons);
