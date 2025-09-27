@@ -1487,6 +1487,7 @@
 
 .hero {
   margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   padding-left: 1rem;
   padding-right: 2rem;
   width: 100vw;
@@ -2894,17 +2895,17 @@ textarea::placeholder {
     padding-top: 9.25rem;
   }
 }
-@media (min-width: 22.5em) and (max-width: 82em){
+@media (min-width: 22.5em) and (max-width: 84.5em){
   .hero__container {
-    padding-top: clamp( 9.25rem , 8.0210084033625rem  +  5.4621848739vw , 12.5rem );
+    padding-top: clamp( 9.25rem , 8.07056451613125rem  +  5.2419354839vw , 12.5rem );
   }
 }
-@media (min-width: 47.99875em) and (max-width: 82em){
+@media (min-width: 47.99875em) and (max-width: 84.5em){
   .hero__title {
-    font-size: clamp( 2rem , 1.2941619793375rem  +  1.4705341715vw , 2.5rem );
+    font-size: clamp( 2rem , 1.34250539365rem  +  1.3698161022vw , 2.5rem );
   }
   .training__body {
-    column-gap: clamp( 2rem , -0.82335208264375rem  +  5.8821366862vw , 4rem );
+    column-gap: clamp( 2rem , -0.62997842539375rem  +  5.4792644088vw , 4rem );
   }
 }
 @media (min-width: 47.99875em){
@@ -2928,18 +2929,18 @@ textarea::placeholder {
     left: 0;
   }
 }
-@media (min-width: 61.99875em) and (max-width: 82em){
+@media (min-width: 61.99875em) and (max-width: 84.5em){
   .hero__container {
-    padding-bottom: clamp( 2rem , -30.54730954315625rem  +  52.4967189551vw , 12.5rem );
+    padding-bottom: clamp( 2rem , -26.93114271429375rem  +  46.6640742181vw , 12.5rem );
   }
   .hero__body {
-    column-gap: clamp( 6.25e-8rem , -12.398974807825rem  +  19.9987497656vw , 4rem );
+    column-gap: clamp( 6.25e-8rem , -11.021387465975rem  +  17.7767899006vw , 4rem );
   }
   .contacts__body {
-    column-gap: clamp( 2rem , -4.19948753203125rem  +  9.9993750391vw , 4rem );
+    column-gap: clamp( 2rem , -3.51069385034375rem  +  8.8883950892vw , 4rem );
   }
 }
-@media (min-width: 82em){
+@media (min-width: 84.5em){
   .hero__container {
     padding-bottom: 12.5rem;
   }
