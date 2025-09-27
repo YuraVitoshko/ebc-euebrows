@@ -14588,40 +14588,21 @@ document.addEventListener("DOMContentLoaded", function() {
     const nameLine = form.querySelector(".form__line--name");
     const phoneFullInput = form.querySelector('input[name="tel-send"]');
     const textarea = document.querySelector(".form__textarea");
-    document.querySelector(".form__valid--textarea");
-    const submitBtn = form.querySelector(".form__button");
+    const errorMsg = document.querySelector(".form__valid--textarea");
+    form.querySelector(".form__button");
     const checkbox = form.querySelector('input[name="checkbox"]');
     const maxLength = 500;
-    const checkFormValidity = () => {
-      const nameValue = nameInput.value.trim();
-      const phoneValue = phoneInput.value.trim();
-      const textLength = textarea.value.length;
-      const isChecked = checkbox.checked;
-      const isNameValid = /^[A-Za-zА-Яа-яІіЇїЄєҐґʼ’\-]{2,}( [A-Za-zА-Яа-яІіЇїЄєҐґʼ’\-]{2,})*$/.test(nameValue);
-      const isPhoneValid = /^\d{9}$/.test(phoneValue);
-      const isTextValid = textLength <= maxLength;
-      if (isNameValid && isPhoneValid && isTextValid && isChecked) {
-        submitBtn.classList.remove("--disabled");
-        submitBtn.disabled = false;
-      } else {
-        submitBtn.classList.add("--disabled");
-        submitBtn.disabled = true;
-      }
-    };
+    checkbox.checked = true;
     phoneInput.addEventListener("input", function() {
       this.value = this.value.replace(/\D/g, "");
       if (this.value.length > 11) {
         this.value = this.value.slice(0, 11);
       }
-      checkFormValidity();
     });
-    nameInput.addEventListener("input", checkFormValidity);
-    textarea.addEventListener("input", checkFormValidity);
-    checkbox.addEventListener("change", checkFormValidity);
     form.addEventListener("submit", function(e) {
       let isValid = true;
       const phoneValue = phoneInput.value.trim();
-      if (/^\d{9}$/.test(phoneValue)) {
+      if (/^\d{9,11}$/.test(phoneValue)) {
         phoneLine.classList.remove("error");
         phoneLine.classList.add("success");
       } else {
@@ -14638,6 +14619,14 @@ document.addEventListener("DOMContentLoaded", function() {
         nameLine.classList.add("error");
         isValid = false;
       }
+      if (textarea.value.length <= maxLength) {
+        textarea.classList.remove("textarea--error");
+        errorMsg.style.display = "none";
+      } else {
+        textarea.classList.add("textarea--error");
+        errorMsg.style.display = "block";
+        isValid = false;
+      }
       if (!checkbox.checked) {
         isValid = false;
       }
@@ -14649,7 +14638,6 @@ document.addEventListener("DOMContentLoaded", function() {
         e.preventDefault();
       }
     });
-    checkFormValidity();
   }
 });
 document.querySelectorAll(".social-footer__link").forEach((link) => {
