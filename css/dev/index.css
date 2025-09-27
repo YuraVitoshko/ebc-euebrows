@@ -1492,7 +1492,7 @@
   width: 100vw;
   height: 100svh;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   overflow: hidden;
 }
@@ -1860,7 +1860,10 @@
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
-.training__container {
+.training__body {
+  padding: 4rem 3rem;
+  border-radius: 1.5rem;
+  background-color: #FAFAFA;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: start;
@@ -2636,7 +2639,7 @@ textarea::placeholder {
 }
 @media (max-width: 120em){
   .button-up {
-    right: 1.25rem;
+    right: 1rem;
   }
 }
 @media (max-width: 61.99875em){
@@ -2703,7 +2706,6 @@ textarea::placeholder {
     margin-top: 0;
     padding-left: 0;
     padding-right: 0;
-    height: 100%;
   }
   .hero__content {
     display: grid;
@@ -2714,6 +2716,7 @@ textarea::placeholder {
   }
   .hero__title {
     text-align: center;
+    font-size: 1.75rem;
   }
   .hero__text {
     text-align: center;
@@ -2775,11 +2778,17 @@ textarea::placeholder {
     padding-bottom: 4.375rem;
   }
   .training__container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .training__body {
     column-gap: 2rem;
   }
-  .training__container {
+  .training__body {
     grid-template-columns: auto;
-    row-gap: 2rem;
+    row-gap: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
   .training__spollers {
     margin-bottom: 3.75rem;
@@ -2805,6 +2814,8 @@ textarea::placeholder {
   .contacts {
     padding-top: 4.375rem;
     padding-bottom: 4.375rem;
+    padding-left: 0;
+    padding-bottom: 0;
   }
   .contacts__container {
     padding-left: 0;
@@ -2892,7 +2903,7 @@ textarea::placeholder {
   .hero__title {
     font-size: clamp( 2rem , 1.2941619793375rem  +  1.4705341715vw , 2.5rem );
   }
-  .training__container {
+  .training__body {
     column-gap: clamp( 2rem , -0.82335208264375rem  +  5.8821366862vw , 4rem );
   }
 }
@@ -2941,7 +2952,7 @@ textarea::placeholder {
   .hero__title {
     font-size: 2.5rem;
   }
-  .training__container {
+  .training__body {
     column-gap: 4rem;
   }
   .contacts__body {

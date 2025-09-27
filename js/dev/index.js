@@ -4671,6 +4671,125 @@ function initSliders() {
   window.addEventListener("resize", toggleAdvantagesSlider);
 }
 document.querySelector("[data-fls-slider]") ? window.addEventListener("load", initSliders) : null;
+class DynamicAdapt {
+  constructor() {
+    this.type = "max";
+    this.init();
+  }
+  init() {
+    this.objects = [];
+    this.daClassname = "--dynamic";
+    this.nodes = [...document.querySelectorAll("[data-fls-dynamic]")];
+    this.nodes.forEach((node) => {
+      const data = node.dataset.flsDynamic.trim();
+      const dataArray = data.split(`,`);
+      const object = {};
+      object.element = node;
+      object.parent = node.parentNode;
+      object.destinationParent = dataArray[3] ? node.closest(dataArray[3].trim()) || document : document;
+      dataArray[3] ? dataArray[3].trim() : null;
+      const objectSelector = dataArray[0] ? dataArray[0].trim() : null;
+      if (objectSelector) {
+        const foundDestination = object.destinationParent.querySelector(objectSelector);
+        if (foundDestination) {
+          object.destination = foundDestination;
+        }
+      }
+      object.breakpoint = dataArray[1] ? dataArray[1].trim() : `767.98`;
+      object.place = dataArray[2] ? dataArray[2].trim() : `last`;
+      object.index = this.indexInParent(object.parent, object.element);
+      this.objects.push(object);
+    });
+    this.arraySort(this.objects);
+    this.mediaQueries = this.objects.map(({ breakpoint }) => `(${this.type}-width: ${breakpoint / 16}em),${breakpoint}`).filter((item, index, self2) => self2.indexOf(item) === index);
+    this.mediaQueries.forEach((media) => {
+      const mediaSplit = media.split(",");
+      const matchMedia = window.matchMedia(mediaSplit[0]);
+      const mediaBreakpoint = mediaSplit[1];
+      const objectsFilter = this.objects.filter(({ breakpoint }) => breakpoint === mediaBreakpoint);
+      matchMedia.addEventListener("change", () => {
+        this.mediaHandler(matchMedia, objectsFilter);
+      });
+      this.mediaHandler(matchMedia, objectsFilter);
+    });
+  }
+  mediaHandler(matchMedia, objects) {
+    if (matchMedia.matches) {
+      objects.forEach((object) => {
+        if (object.destination) {
+          this.moveTo(object.place, object.element, object.destination);
+        }
+      });
+    } else {
+      objects.forEach(({ parent, element, index }) => {
+        if (element.classList.contains(this.daClassname)) {
+          this.moveBack(parent, element, index);
+        }
+      });
+    }
+  }
+  moveTo(place, element, destination) {
+    element.classList.add(this.daClassname);
+    const index = place === "last" || place === "first" ? place : parseInt(place, 10);
+    if (index === "last" || index >= destination.children.length) {
+      destination.append(element);
+    } else if (index === "first") {
+      destination.prepend(element);
+    } else {
+      destination.children[index].before(element);
+    }
+  }
+  moveBack(parent, element, index) {
+    element.classList.remove(this.daClassname);
+    if (parent.children[index] !== void 0) {
+      parent.children[index].before(element);
+    } else {
+      parent.append(element);
+    }
+  }
+  indexInParent(parent, element) {
+    return [...parent.children].indexOf(element);
+  }
+  arraySort(arr) {
+    if (this.type === "min") {
+      arr.sort((a, b) => {
+        if (a.breakpoint === b.breakpoint) {
+          if (a.place === b.place) {
+            return 0;
+          }
+          if (a.place === "first" || b.place === "last") {
+            return -1;
+          }
+          if (a.place === "last" || b.place === "first") {
+            return 1;
+          }
+          return 0;
+        }
+        return a.breakpoint - b.breakpoint;
+      });
+    } else {
+      arr.sort((a, b) => {
+        if (a.breakpoint === b.breakpoint) {
+          if (a.place === b.place) {
+            return 0;
+          }
+          if (a.place === "first" || b.place === "last") {
+            return 1;
+          }
+          if (a.place === "last" || b.place === "first") {
+            return -1;
+          }
+          return 0;
+        }
+        return b.breakpoint - a.breakpoint;
+      });
+      return;
+    }
+  }
+}
+if (document.querySelector("[data-fls-dynamic]")) {
+  window.addEventListener("load", () => new DynamicAdapt());
+}
 class ScrollWatcher {
   constructor(props) {
     let defaultConfig = {
@@ -14491,6 +14610,9 @@ document.addEventListener("DOMContentLoaded", function() {
     };
     phoneInput.addEventListener("input", function() {
       this.value = this.value.replace(/\D/g, "");
+      if (this.value.length > 11) {
+        this.value = this.value.slice(0, 11);
+      }
       checkFormValidity();
     });
     nameInput.addEventListener("input", checkFormValidity);
