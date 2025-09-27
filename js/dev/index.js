@@ -14652,13 +14652,3 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
-document.addEventListener("DOMContentLoaded", () => {
-  const buttonUp = document.querySelector(".button-up");
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 2e3) {
-      buttonUp.classList.add("visible");
-    } else {
-      buttonUp.classList.remove("visible");
-    }
-  });
-});
