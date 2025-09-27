@@ -1499,7 +1499,6 @@
 }
 .hero__container {
   width: 100%;
-  max-width: 117.5rem;
   background-color: #FAFAFA;
   border-radius: 1.5rem;
   display: flex;
@@ -1806,7 +1805,7 @@
   width: 100%;
   border-radius: 0.75rem;
   overflow: hidden;
-  aspect-ratio: 324/340;
+  aspect-ratio: 324/360;
   opacity: 0;
   transform: translateY(7%);
   transition: opacity 0.8s, transform 0.8s;
@@ -2107,6 +2106,17 @@
   line-height: 1.33;
   color: #9EA5AD;
   padding-bottom: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.3125rem;
+}
+.card-timetable__time::before {
+  content: "";
+  width: 0.8125rem;
+  height: 0.8125rem;
+  flex: 0 0 0.8125rem;
+  background: url(../assets/img/clock.svg) 0 0 no-repeat;
+  background-size: contain;
 }
 .card-timetable__tag {
   border: 0.0625rem solid #C1E3F6;
@@ -2376,6 +2386,7 @@
   height: 100%;
   border-radius: 1rem;
   overflow: hidden;
+  aspect-ratio: 580/412;
 }
 .contacts__media img {
   width: 100%;
@@ -2817,6 +2828,7 @@ textarea::placeholder {
     padding-bottom: 4.375rem;
     padding-left: 0;
     padding-bottom: 0;
+    padding-right: 0;
   }
   .contacts__container {
     padding-left: 0;
@@ -2888,6 +2900,9 @@ textarea::placeholder {
   }
   .card-timetable {
     padding: 1rem;
+  }
+  .contacts__media {
+    height: 20rem;
   }
 }
 @media (max-width: 22.5em){
