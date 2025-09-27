@@ -14562,6 +14562,7 @@ document.addEventListener("DOMContentLoaded", () => {
   pauseButton.addEventListener("click", () => videoPlayer.pause());
   videoPlayer.addEventListener("play", updatePlayPauseButtons);
   videoPlayer.addEventListener("pause", updatePlayPauseButtons);
+  videoPlayer.addEventListener("touchstart", updatePlayPauseButtons);
   muteButton.addEventListener("click", () => {
     videoPlayer.muted = !videoPlayer.muted;
     muteButton.innerHTML = videoPlayer.muted ? '<img src="assets/img/icons/sound-off.svg" alt="Mute">' : '<img src="assets/img/icons/sound-on.svg" alt="Sound-on">';
