@@ -14573,14 +14573,14 @@ document.addEventListener("DOMContentLoaded", () => {
     muteButton.innerHTML = videoPlayer.muted ? '<img src="assets/img/icons/sound-off.svg" alt="Mute">' : '<img src="assets/img/icons/sound-on.svg" alt="Sound-on">';
   });
   fullscreenButton.addEventListener("click", () => {
-    if (!document.fullscreenElement) {
-      if (videoContainer.requestFullscreen) videoContainer.requestFullscreen();
-      else if (videoContainer.webkitRequestFullscreen) videoContainer.webkitRequestFullscreen();
-      else if (videoContainer.msRequestFullscreen) videoContainer.msRequestFullscreen();
-    } else {
-      if (document.exitFullscreen) document.exitFullscreen();
-      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-      else if (document.msExitFullscreen) document.msExitFullscreen();
+    if (videoPlayer.webkitEnterFullscreen) {
+      videoPlayer.webkitEnterFullscreen();
+    } else if (videoContainer.requestFullscreen) {
+      videoContainer.requestFullscreen();
+    } else if (videoContainer.webkitRequestFullscreen) {
+      videoContainer.webkitRequestFullscreen();
+    } else if (videoContainer.msRequestFullscreen) {
+      videoContainer.msRequestFullscreen();
     }
   });
   function showControls() {
