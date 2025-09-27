@@ -14559,15 +14559,16 @@ document.addEventListener("DOMContentLoaded", () => {
       pauseButton.style.display = "block";
     }
   }
-  function togglePlay() {
-    if (videoPlayer.paused) videoPlayer.play();
-    else videoPlayer.pause();
+  playButton.addEventListener("click", () => {
+    videoPlayer.play();
     updatePlayPauseButtons();
-  }
-  playButton.addEventListener("click", togglePlay);
-  pauseButton.addEventListener("click", togglePlay);
-  videoContainer.addEventListener("touchstart", togglePlay);
-  videoContainer.addEventListener("click", togglePlay);
+  });
+  pauseButton.addEventListener("click", () => {
+    videoPlayer.pause();
+    updatePlayPauseButtons();
+  });
+  videoPlayer.addEventListener("play", updatePlayPauseButtons);
+  videoPlayer.addEventListener("pause", updatePlayPauseButtons);
   muteButton.addEventListener("click", () => {
     videoPlayer.muted = !videoPlayer.muted;
     muteButton.innerHTML = videoPlayer.muted ? '<img src="assets/img/icons/sound-off.svg" alt="Mute">' : '<img src="assets/img/icons/sound-on.svg" alt="Sound-on">';
@@ -14598,6 +14599,14 @@ document.addEventListener("DOMContentLoaded", () => {
   videoContainer.addEventListener("mouseenter", showControls);
   videoContainer.addEventListener("mousemove", showControls);
   videoContainer.addEventListener("mouseleave", hideControls);
+  let lastTap = 0;
+  videoContainer.addEventListener("touchstart", (e) => {
+    const now2 = Date.now();
+    if (now2 - lastTap < 300) return;
+    lastTap = now2;
+    if (navvControls.classList.contains("hidden")) showControls();
+    else hideControls();
+  });
 });
 document.addEventListener("DOMContentLoaded", () => {
   const buttonUp = document.querySelector(".button-up");
