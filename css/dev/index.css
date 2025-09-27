@@ -2719,7 +2719,9 @@ textarea::placeholder {
     font-size: 0.875rem;
   }
   .hero__media {
-    aspect-ratio: 1/1;
+    flex: 0 0 22.5rem;
+    width: 22.5rem;
+    height: 22.5rem;
   }
   .who {
     padding-top: 4.375rem;
