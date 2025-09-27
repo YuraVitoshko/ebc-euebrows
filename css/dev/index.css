@@ -2703,6 +2703,7 @@ textarea::placeholder {
     margin-top: 0;
     padding-left: 0;
     padding-right: 0;
+    height: 100%;
   }
   .hero__content {
     display: grid;
