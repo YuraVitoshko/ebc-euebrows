@@ -1532,6 +1532,10 @@
 .hero__text:not(:last-child) {
   margin-bottom: 1.5rem;
 }
+.hero__actions {
+  position: relative;
+  z-index: 5;
+}
 .hero__actions:not(:last-child) {
   margin-bottom: 4rem;
 }
@@ -2115,7 +2119,7 @@
   width: 0.8125rem;
   height: 0.8125rem;
   flex: 0 0 0.8125rem;
-  background: url(../assets/img/icons/clock.svg) 0 0 no-repeat;
+  background: url(../assets/img/clock.svg) 0 0 no-repeat;
   background-size: contain;
 }
 .card-timetable__tag {
