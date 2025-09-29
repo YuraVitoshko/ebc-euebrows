@@ -2707,7 +2707,7 @@ textarea::placeholder {
     text-align: left;
   }
   .hero__actions:not(:last-child) {
-    margin-bottom: 10.625rem;
+    margin-bottom: 10rem;
   }
   .hero__statistic {
     margin-bottom: 1.5rem;
@@ -2717,6 +2717,7 @@ textarea::placeholder {
     bottom: 0;
     z-index: 0;
     right: -1rem;
+    height: 22.5rem;
   }
   .hero__media img {
     object-fit: cover;
