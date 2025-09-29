@@ -2717,9 +2717,7 @@ textarea::placeholder {
     bottom: 0;
     z-index: 0;
     right: -1rem;
-  }
-  .hero__media img {
-    object-fit: fill;
+    max-width: 30rem;
   }
   .statistic-hero {
     grid-template-columns: repeat(2, 1fr);
