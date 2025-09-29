@@ -4,12 +4,12 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
-		<script src="https://static.elfsight.com/platform/platform.js?v=1759059005979" async></script>
+		<script src="https://static.elfsight.com/platform/platform.js?v=1759153967772" async></script>
 		<title>Educational Beauty Center</title>
-		<script type="module" crossorigin="" src="./js/index.min.js?v=1759059005979"></script>
-		<link rel="modulepreload" crossorigin="" href="./js/app.min.js?v=1759059005979">
-		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1759059005979">
-		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1759059005979">
+		<script type="module" crossorigin="" src="./js/index.min.js?v=1759153967772"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/app.min.js?v=1759153967772">
+		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1759153967772">
+		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1759153967772">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -80,12 +80,17 @@
 					<div class="hero__container">
 						<div class="hero__body">
 							<div class="hero__content">
-								<h1 class="hero__title">Szkolenie ze stylizacji i laminacji brwi oraz rzęs 2w1</h1>
+								<h1 class="hero__title">Szkolenie ze stylizacji i laminacji brwi oraz rzęs</h1>
 								<div class="hero__text">
 									<p>
-										2-dniowy intensywny kurs, 5 praktycznych ćwiczeń na modelkach. Dyplom z numerem RIS + Certyfikat ISO
+										2-dniowy intensywny kurs, który da Ci pewność i umiejętności do pracy z klientkami.
 									</p>
 								</div>
+								<ul class="hero__list">
+									<li class="hero__item">5 praktycznych ćwiczeń na modelkach</li>
+									<li class="hero__item">Dyplom RIS + Certyfikat ISO</li>
+									<li class="hero__item">Kameralne grupy</li>
+								</ul>
 								<div class="hero__actions">
 									<a href="#" data-fls-button="" data-fls-scrollto=".page__training" data-fls-scrollto-header="" class="hero__button button">Dowiedz się więcej</a>
 								</div>
@@ -104,7 +109,12 @@
 									</div>
 								</div>
 							</div>
-							<div data-fls-dynamic=".hero__content, 991.98, 3" class="hero__media">
+							<!--
+<div data-fls-dynamic=".hero__content, 991.98, 4" class="hero__media">
+<img src="@img/hero-img.png" alt="Image">
+</div>
+-->
+							<div class="hero__media">
 								<picture>
 									<img alt="Image" src="./assets/img/hero-img.webp">
 								</picture>
@@ -114,8 +124,8 @@
 				</section>
 				<div class="video">
 					<div data-fls-watcher="" data-fls-watcher-threshold="0.5" data-fls-watcher-once="" class="video__container">
-						<video id="video-player" poster="./assets/img/video-poster.png" class="video__item" controlslist="nodownload" loop playsinline="" preload="metadata">
-							<source src="./assets/video/hero-video.mp4" type="video/mp4">
+						<video id="video-player" poster="../../../assets/img/video-poster.png" class="video__item" controlslist="nodownload" loop playsinline="" preload="metadata">
+							<source src="../../../assets/video/hero-video.mp4" type="video/mp4">
 						</video>
 						<div class="video__nav nav-video">
 							<button id="play" class="nav-video__btn-play">
@@ -369,12 +379,12 @@
 										<summary class="spollers__title">Dzień 1 — Stylizacja brwi (10:00–19:00)</summary>
 										<div class="spollers__body">
 											<ul class="spollers__list list-spollers-training">
-												<li class="list-spollers-training__item">10:00–12:00 — Teoria, BHP, budowa włosa</li>
-												<li class="list-spollers-training__item">12:00–13:00 — Testowanie 6 marek farbek i 2 marek henny</li>
-												<li class="list-spollers-training__item">13:00–14:00 — Przerwa obiadowa</li>
+												<li class="list-spollers-training__item">10:00–12:00 — Podstawy teoretyczne</li>
+												<li class="list-spollers-training__item">12:00–13:00 — Testowanie 6 marek farbek i 2 marek henny</li>
+												<li class="list-spollers-training__item">13:00–14:00 — Przerwa obiadowa</li>
 												<li class="list-spollers-training__item">14:00–15:00 — Demonstracyjna praca farbą na modelce</li>
 												<li class="list-spollers-training__item">
-													15:00–16:30 — Praktyka na modelce #1:
+													15:00–16:30 — Praktyka na modelce #1:
 													<ul class="list-spollers-training__sublist sublist-spollers-training">
 														<li class="sublist-spollers-training__item">Architektura brwi</li>
 														<li class="sublist-spollers-training__item">Koloryzacja (farbka)</li>
@@ -386,8 +396,6 @@
 													17:30–19:00 — Praktyka na modelce #2:
 													<ul class="list-spollers-training__sublist sublist-spollers-training">
 														<li class="sublist-spollers-training__item">Architektura brwi</li>
-														<li class="sublist-spollers-training__item">Koloryzacja (farbka)</li>
-														<li class="sublist-spollers-training__item">Regulacja pęsetą i woskiem</li>
 													</ul>
 												</li>
 											</ul>
@@ -397,24 +405,26 @@
 										<summary class="spollers__title">Dzień 2 — Laminacja brwi i rzęs + pielęgnacja (10:00–19:00)</summary>
 										<div class="spollers__body">
 											<ul class="spollers__list list-spollers-training">
-												<li class="list-spollers-training__item">10:00–12:00 — Teoria, BHP, budowa włosa</li>
-												<li class="list-spollers-training__item">12:00–13:00 — Testowanie 6 marek farbek i 2 marek henny</li>
-												<li class="list-spollers-training__item">13:00–14:00 — Przerwa obiadowa</li>
-												<li class="list-spollers-training__item">14:00–15:00 — Demonstracyjna praca farbą na modelce</li>
+												<li class="list-spollers-training__item">10:00–12:30 — Teoria laminacji brwi i rzęs + pielęgnacja</li>
+												<li class="list-spollers-training__item">12:30–14:00 — Demonstracja instruktorki (laminacja + farbowanie brwi i rzęs)</li>
+												<li class="list-spollers-training__item">14:00–15:00 — Przerwa obiadowa</li>
 												<li class="list-spollers-training__item">
-													15:00–16:30 — Praktyka na modelce #1:
+													15:00–19:00 — Praktyka na modelce #3:
 													<ul class="list-spollers-training__sublist sublist-spollers-training">
-														<li class="sublist-spollers-training__item">Architektura brwi</li>
-														<li class="sublist-spollers-training__item">Koloryzacja (farbka)</li>
-														<li class="sublist-spollers-training__item">Regulacja pęsetą i woskiem</li>
+														<li class="sublist-spollers-training__item">laminacja + farbowanie brwi</li>
 													</ul>
 												</li>
-												<li class="list-spollers-training__item">16:30–17:30 — Demonstracyjna praca henną na modelce</li>
 												<li class="list-spollers-training__item">
-													17:30–19:00 — Praktyka na modelce #2:
+													15:00–19:00 — Praktyka na modelce #4:
 													<ul class="list-spollers-training__sublist sublist-spollers-training">
-														<li class="sublist-spollers-training__item">Architektura brwi</li>
-														<li class="sublist-spollers-training__item">Koloryzacja (farbka)</li>
+														<li class="sublist-spollers-training__item">laminacja + farbowanie rzęs</li>
+													</ul>
+												</li>
+												<li class="list-spollers-training__item">
+													15:00–19:00 — Praktyka na modelce #5:
+													<ul class="list-spollers-training__sublist sublist-spollers-training">
+														<li class="sublist-spollers-training__item">Pielęgnacja po zabiegach i zalecenia dla klientek</li>
+														<li class="sublist-spollers-training__item">Koloryzacja (henna)</li>
 														<li class="sublist-spollers-training__item">Regulacja pęsetą i woskiem</li>
 													</ul>
 												</li>
@@ -422,28 +432,15 @@
 										</div>
 									</details>
 									<details data-fls-watcher="" data-fls-watcher-threshold="0.1" data-fls-watcher-once="" class="spollers__item spollers__item--open-anim">
-										<summary class="spollers__title">Bonusy po szkoleniu</summary>
+										<summary class="spollers__title">Bonusy po kursie</summary>
 										<div class="spollers__body">
 											<ul class="spollers__list list-spollers-training">
-												<li class="list-spollers-training__item">10:00–12:00 — Teoria, BHP, budowa włosa</li>
-												<li class="list-spollers-training__item">12:00–13:00 — Testowanie 6 marek farbek i 2 marek henny</li>
-												<li class="list-spollers-training__item">13:00–14:00 — Przerwa obiadowa</li>
-												<li class="list-spollers-training__item">14:00–15:00 — Demonstracyjna praca farbą na modelce</li>
 												<li class="list-spollers-training__item">
-													15:00–16:30 — Praktyka na modelce #1:
 													<ul class="list-spollers-training__sublist sublist-spollers-training">
-														<li class="sublist-spollers-training__item">Architektura brwi</li>
-														<li class="sublist-spollers-training__item">Koloryzacja (farbka)</li>
-														<li class="sublist-spollers-training__item">Regulacja pęsetą i woskiem</li>
-													</ul>
-												</li>
-												<li class="list-spollers-training__item">16:30–17:30 — Demonstracyjna praca henną na modelce</li>
-												<li class="list-spollers-training__item">
-													17:30–19:00 — Praktyka na modelce #2:
-													<ul class="list-spollers-training__sublist sublist-spollers-training">
-														<li class="sublist-spollers-training__item">Architektura brwi</li>
-														<li class="sublist-spollers-training__item">Koloryzacja (farbka)</li>
-														<li class="sublist-spollers-training__item">Regulacja pęsetą i woskiem</li>
+														<li class="sublist-spollers-training__item">Skrypt szkoleniowy w formie PDF oraz manekin w prezencie</li>
+														<li class="sublist-spollers-training__item">Poradnik "Jak stworzyć profesjonalny profil na Instagramie"</li>
+														<li class="sublist-spollers-training__item">Zniżki do -30% od sklepów i marek partnerskich</li>
+														<li class="sublist-spollers-training__item">Dodatkowe darmowe ćwiczenie z instruktorem po kursie</li>
 													</ul>
 												</li>
 											</ul>
@@ -581,11 +578,11 @@
 									<picture>
 										<img alt="Image" src="./assets/img/courses-img03.webp">
 									</picture>
-									<span class="card-courses__label">-10%</span>
+									<span class="card-courses__label">Bestseller</span>
 								</a>
 								<div class="card-courses__body">
 									<div class="card-courses__tags">
-										<span class="card-courses__tag">Bestseller</span>
+										<span class="card-courses__tag">Małe grupy</span>
 										<span class="card-courses__tag">2-dniowy</span>
 										<span class="card-courses__tag">18 godzin</span>
 									</div>
@@ -707,63 +704,116 @@
 									<summary class="spollers__title">Jak mogę zapisać się na kurs?</summary>
 									<div class="spollers__body">
 										<p>
-											To bardzo proste! Wystarczy, że wypełnisz formularz na stronie lub napiszesz do nas — skontaktujemy się z Tobą, by
+											To bardzo proste! Wystarczy, że wypełnisz formularz na stronie lub napiszesz do nas — skontaktujemy się z Tobą, by
 							potwierdzić szczegóły i dostępność miejsc.
+										</p>
+									</div>
+								</details>
+								<details data-fls-watcher="" data-fls-watcher-threshold="0.5" data-fls-watcher-once="" class="spollers__item spollers__item--anim">
+									<summary class="spollers__title">Czy muszę wpłacić zaliczkę?</summary>
+									<div class="spollers__body">
+										<p>
+											Tak, żeby zarezerwować miejsce, prosimy o wpłatę zaliczki w wysokości 300 zł.
+							To pozwala nam zorganizować modelki i przygotować dla Ciebie wszystkie materiały.
 										</p>
 									</div>
 								</details>
 								<details data-fls-watcher="" data-fls-watcher-threshold="0.5" data-fls-watcher-once="" class="spollers__item spollers__item--anim">
 									<summary class="spollers__title">Gdzie odbywają się szkolenia?</summary>
 									<div class="spollers__body">
-										<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+										<p>
+											Szkolenia odbywają się stacjonarnie w naszej siedzibie:
+							ul. Kaliska 23 / U4, Warszawa (Ochota, 5 min od Dworca Zachodniego).
+										</p>
 									</div>
 								</details>
 								<details data-fls-watcher="" data-fls-watcher-threshold="0.5" data-fls-watcher-once="" class="spollers__item spollers__item--anim">
 									<summary class="spollers__title">Czy muszę mieć doświadczenie?</summary>
 									<div class="spollers__body">
-										<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+										<p>
+											Nie. Kurs jest idealny dla osób początkujących. Wszystkiego uczymy od podstaw — krok po kroku.
+										</p>
 									</div>
 								</details>
 								<details data-fls-watcher="" data-fls-watcher-threshold="0.5" data-fls-watcher-once="" class="spollers__item spollers__item--anim">
 									<summary class="spollers__title">Czy mogę opłacić kurs na raty?</summary>
 									<div class="spollers__body">
-										<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+										<p>
+											Tak, oferujemy raty 0% wewnętrznie. Skontaktuj się z nami, doradzimy najlepsze rozwiązanie.
+										</p>
 									</div>
 								</details>
 								<details data-fls-watcher="" data-fls-watcher-threshold="0.5" data-fls-watcher-once="" class="spollers__item spollers__item--anim">
 									<summary class="spollers__title">Czy muszę mieć modelki na kurs?</summary>
 									<div class="spollers__body">
-										<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+										<p>
+											Nie musisz, modelki organizujemy we własnym zakresie. Ale jeśli chcesz przyjść ze swoją, również jest taka możliwość
+							💁‍♀️
+										</p>
 									</div>
 								</details>
 								<details data-fls-watcher="" data-fls-watcher-threshold="0.5" data-fls-watcher-once="" class="spollers__item spollers__item--anim">
-									<summary class="spollers__title">Czy materiały są w cenie kursu?</summary>
+									<summary class="spollers__title">Czy materiały są w cenie?</summary>
 									<div class="spollers__body">
-										<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+										<p>
+											Tak. Wszystkie materiały, narzędzia i produkty do ćwiczeń są zapewnione przez nas. Pracujesz na najlepszych markach
+							dostępnych na rynku.
+										</p>
 									</div>
 								</details>
 								<details data-fls-watcher="" data-fls-watcher-threshold="0.5" data-fls-watcher-once="" class="spollers__item spollers__item--anim">
 									<summary class="spollers__title">Ile osób jest w grupie?</summary>
 									<div class="spollers__body">
-										<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-									</div>
-								</details>
-								<details data-fls-watcher="" data-fls-watcher-threshold="0.5" data-fls-watcher-once="" class="spollers__item spollers__item--anim">
-									<summary class="spollers__title">Czy po kursie będę gotowa pracować z klientkami?</summary>
-									<div class="spollers__body">
-										<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+										<p>
+											Stawiamy na jakość i maksymalną ilość praktyki, dlatego grupy są kameralne — max 3–4 osoby.
+										</p>
 									</div>
 								</details>
 								<details data-fls-watcher="" data-fls-watcher-threshold="0.5" data-fls-watcher-once="" class="spollers__item spollers__item--anim">
 									<summary class="spollers__title">Czy mogę otrzymać fakturę?</summary>
 									<div class="spollers__body">
-										<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+										<p>Oczywiście. Wystawiamy faktury zarówno dla osób prywatnych, jak i firm.</p>
+									</div>
+								</details>
+								<details data-fls-watcher="" data-fls-watcher-threshold="0.5" data-fls-watcher-once="" class="spollers__item spollers__item--anim">
+									<summary class="spollers__title">Czy po kursie będę gotowa pracować z klientkami?</summary>
+									<div class="spollers__body">
+										<p>
+											Tak, taka jest nasza misja 🤍 Uczymy w taki sposób, byś mogła zacząć działać od razu po kursie. Po intensywnej praktyce
+							z modelkami będziesz gotowa do pierwszych stylizacji. Na początek warto ćwiczyć w bezpiecznej, znajomej atmosferze, to
+							najlepszy sposób, by nabrać pewności i zbudować swoje portfolio.
+										</p>
+									</div>
+								</details>
+								<details data-fls-watcher="" data-fls-watcher-threshold="0.5" data-fls-watcher-once="" class="spollers__item spollers__item--anim">
+									<summary class="spollers__title">Czy otrzymam certyfikaty?</summary>
+									<div class="spollers__body">
+										<p>
+											Tak. Otrzymasz Dyplom z numerem RIS (Rejestr Instytucji Szkoleniowych) oraz Certyfikat ISO.
+										</p>
 									</div>
 								</details>
 								<details data-fls-watcher="" data-fls-watcher-threshold="0.5" data-fls-watcher-once="" class="spollers__item spollers__item--anim">
 									<summary class="spollers__title">Czy mogę liczyć na wsparcie po zakończeniu kursu?</summary>
 									<div class="spollers__body">
-										<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+										<p>
+											Tak! Po kursie zostajesz z nami w kontakcie, możesz skonsultować swoje pierwsze prace, zadać pytania, a także skorzystać
+							z dodatkowego darmowego ćwiczenia z instruktorką.
+										</p>
+									</div>
+								</details>
+								<details data-fls-watcher="" data-fls-watcher-threshold="0.5" data-fls-watcher-once="" class="spollers__item spollers__item--anim">
+									<summary class="spollers__title">Czy dostanę materiały po kursie?</summary>
+									<div class="spollers__body">
+										<p>
+											Tak! Otrzymasz skrypt PDF i poradniki do pracy z klientkami oraz tworzenia profilu na Instagramie.
+										</p>
+									</div>
+								</details>
+								<details data-fls-watcher="" data-fls-watcher-threshold="0.5" data-fls-watcher-once="" class="spollers__item spollers__item--anim">
+									<summary class="spollers__title">Czy mogę zapisać się z koleżanką?</summary>
+									<div class="spollers__body">
+										<p>Tak, mamy specjalne bonusy dla zapisów grupowych. Napisz do nas po szczegóły.</p>
 									</div>
 								</details>
 							</div>
