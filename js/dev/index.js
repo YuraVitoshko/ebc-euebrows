@@ -14728,3 +14728,44 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll('a[href^="#"]');
+  const speed = 3e3;
+  function closeMenu() {
+    document.documentElement.removeAttribute("data-fls-menu-open");
+  }
+  function closeScrolllock() {
+    document.documentElement.removeAttribute("data-fls-scrolllock");
+  }
+  function smoothScrollTo(targetY, duration) {
+    const startY = window.scrollY;
+    const distance = targetY - startY;
+    let startTime = null;
+    function animation(currentTime) {
+      if (!startTime) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+      const ease = progress < 0.5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress;
+      window.scrollTo(0, startY + distance * ease);
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      }
+    }
+    requestAnimationFrame(animation);
+  }
+  links.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const targetId = link.getAttribute("href").substring(1);
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        e.preventDefault();
+        closeMenu();
+        closeScrolllock();
+        const targetY = targetEl.getBoundingClientRect().top + window.scrollY;
+        const distance = Math.abs(window.scrollY - targetY);
+        const duration = distance / speed * 1e3;
+        smoothScrollTo(targetY, duration);
+      }
+    });
+  });
+});
