@@ -1538,8 +1538,6 @@
   margin-bottom: 1.5rem;
 }
 .hero__list {
-  position: relative;
-  z-index: 5;
   display: grid;
   row-gap: 0.75rem;
 }
