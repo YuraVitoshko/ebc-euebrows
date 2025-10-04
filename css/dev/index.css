@@ -1496,13 +1496,14 @@
   overflow: hidden;
 }
 .hero__container {
-  padding-bottom: 2rem;
+  padding-top: 9.375rem;
   width: 100%;
   padding-right: 0;
   border-radius: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-bottom: 6rem;
 }
 .hero__body {
   position: relative;
@@ -2716,9 +2717,6 @@ textarea::placeholder {
 }
 @media (max-width: 61.99875em){
   .hero__container {
-    padding-bottom: 2rem;
-  }
-  .hero__container {
     align-items: flex-start;
   }
   .hero__body {
@@ -2933,16 +2931,6 @@ textarea::placeholder {
     padding: 1rem;
   }
 }
-@media (max-width: 22.5em){
-  .hero__container {
-    padding-top: 9.25rem;
-  }
-}
-@media (min-width: 22.5em) and (max-width: 85em){
-  .hero__container {
-    padding-top: clamp( 9.25rem , 8.08rem  +  5.2vw , 12.5rem );
-  }
-}
 @media (min-width: 47.99875em) and (max-width: 85em){
   .hero__title {
     font-size: clamp( 1.75rem , 0.77708523360625rem  +  2.0269585487vw , 2.5rem );
@@ -2978,9 +2966,6 @@ textarea::placeholder {
   }
 }
 @media (min-width: 61.99875em) and (max-width: 85em){
-  .hero__container {
-    padding-bottom: clamp( 2rem , -26.30223900875rem  +  45.6496929515vw , 12.5rem );
-  }
   .hero__body {
     column-gap: clamp( 6.25e-8rem , -10.7818051057rem  +  17.3903589479vw , 4rem );
   }
@@ -2989,12 +2974,6 @@ textarea::placeholder {
   }
 }
 @media (min-width: 85em){
-  .hero__container {
-    padding-bottom: 12.5rem;
-  }
-  .hero__container {
-    padding-top: 12.5rem;
-  }
   .hero__body {
     column-gap: 4rem;
   }
