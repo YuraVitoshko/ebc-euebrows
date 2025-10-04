@@ -2768,6 +2768,8 @@ textarea::placeholder {
 }
 @media (max-width: 47.99875em){
   .hero {
+    height: 100%;
+    width: 100%;
     margin: 0;
   }
   .hero__container {
