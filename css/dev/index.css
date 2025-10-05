@@ -2461,8 +2461,8 @@
 .contacts {
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 .contacts__wrapper {
   border-radius: 1.5rem;
@@ -2913,10 +2913,7 @@ textarea::placeholder {
     padding-bottom: 4.375rem;
   }
   .contacts {
-    padding-top: 4.375rem;
-    padding-bottom: 4.375rem;
     padding-left: 0;
-    padding-bottom: 0;
     padding-right: 0;
   }
   .contacts__container {
@@ -2924,8 +2921,7 @@ textarea::placeholder {
     padding-right: 0;
   }
   .contacts__wrapper {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding: 3rem 1.25rem;
   }
   .form__line {
     border-radius: 1rem;

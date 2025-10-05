@@ -449,12 +449,15 @@ body {
   text-align: center;
 }
 .title--decor {
+  margin: 0 auto;
+  text-align: center;
   position: relative;
 }
 .title--decor::before {
   content: "";
   position: absolute;
   bottom: 0;
+  left: 4.375rem;
   height: 0.625rem;
   background: url(../assets/img/title-decor.svg) 0 0 no-repeat;
   object-fit: contain;
@@ -642,9 +645,6 @@ body {
     max-width: 18.75rem;
   }
   .title--decor::before {
-    left: 0.9375rem;
-  }
-  .title--decor::before {
     width: 12.1875rem;
   }
   .title--decor-center::before {
@@ -652,6 +652,9 @@ body {
   }
   .title {
     font-size: 1.75rem;
+  }
+  .title--decor::before {
+    left: 4.6875rem;
   }
 }
 @media (max-width: 29.99875em){
@@ -682,9 +685,6 @@ body {
   }
   .title--pos::before {
     width: clamp( 12.1875rem , 7.7283073207rem  +  9.2902266815vw , 15.625rem );
-  }
-  .title--decor::before {
-    left: clamp( 0.9375rem , 0.2888901557375rem  +  1.3513056991vw , 1.4375rem );
   }
   .title--decor::before {
     width: clamp( 12.1875rem , 10.16059423668125rem  +  4.2228303098vw , 13.75rem );
@@ -751,9 +751,6 @@ body {
   }
   .title--pos::before {
     width: 15.625rem;
-  }
-  .title--decor::before {
-    left: 1.4375rem;
   }
   .title--decor::before {
     width: 13.75rem;
