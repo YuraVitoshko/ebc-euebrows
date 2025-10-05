@@ -1506,7 +1506,7 @@
   flex: 0 0 0.875rem;
   height: 0.875rem;
   width: 0.875rem;
-  background: url(../assets/img/arrow.svg) center no-repeat;
+  background: url(../../assets/img/icons/arrow.svg) center no-repeat;
   background-size: contain;
 }
 .button--fw {
