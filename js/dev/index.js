@@ -14650,3 +14650,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".card-timetable__tag").forEach((tag) => {
+    if (tag.textContent.includes("Ostatnie")) {
+      tag.style.backgroundColor = "#E35336";
+      tag.style.border = "1px solid #F5C4BA";
+      tag.style.color = "#ffffff";
+    }
+  });
+});
