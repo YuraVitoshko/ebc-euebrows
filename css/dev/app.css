@@ -418,7 +418,7 @@ body {
 
 .title {
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.875rem;
   line-height: 1.25;
   letter-spacing: -0.01em;
   color: #24292E;
@@ -435,7 +435,8 @@ body {
   content: "";
   position: absolute;
   bottom: 0;
-  left: 1.875rem;
+  left: 3.125rem;
+  width: 15.625rem;
   height: 0.625rem;
   background: url(../assets/img/title-decor.svg) 0 0 no-repeat;
   object-fit: contain;
@@ -458,6 +459,7 @@ body {
   position: absolute;
   bottom: 0;
   left: 4.375rem;
+  width: 13.75rem;
   height: 0.625rem;
   background: url(../assets/img/title-decor.svg) 0 0 no-repeat;
   object-fit: contain;
@@ -638,23 +640,20 @@ body {
     padding-left: 0;
     padding-top: 2rem;
   }
-  .title--pos::before {
-    width: 12.1875rem;
-  }
   .title--pos {
     max-width: 18.75rem;
   }
-  .title--decor::before {
-    width: 12.1875rem;
+  .title--pos::before {
+    left: 1.25rem;
   }
   .title--decor-center::before {
     width: 12.1875rem;
   }
   .title {
-    font-size: 1.75rem;
+    font-size: 1.625rem;
   }
   .title--decor::before {
-    left: 4.6875rem;
+    left: 3.75rem;
   }
 }
 @media (max-width: 29.99875em){
@@ -669,9 +668,6 @@ body {
     align-items: center;
     row-gap: 0.5rem;
   }
-  .title--pos::before {
-    left: 4.375rem;
-  }
   .title--decor-center::before {
     left: 4.375rem;
   }
@@ -682,12 +678,6 @@ body {
   }
   .footer__column:not(:first-child) {
     padding-left: clamp( 2rem , -0.59443937705rem  +  5.4052227965vw , 4rem );
-  }
-  .title--pos::before {
-    width: clamp( 12.1875rem , 7.7283073207rem  +  9.2902266815vw , 15.625rem );
-  }
-  .title--decor::before {
-    width: clamp( 12.1875rem , 10.16059423668125rem  +  4.2228303098vw , 13.75rem );
   }
   .title--decor-center::before {
     width: clamp( 12.1875rem , 3.6744957940625rem  +  17.7358873011vw , 18.75rem );
@@ -748,12 +738,6 @@ body {
   }
   .footer__column:not(:first-child) {
     padding-left: 4rem;
-  }
-  .title--pos::before {
-    width: 15.625rem;
-  }
-  .title--decor::before {
-    width: 13.75rem;
   }
   .title--decor-center::before {
     width: 18.75rem;
